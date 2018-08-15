@@ -10,7 +10,7 @@
 		28546181E796460E450A8CE1 /* Pods_PicsurpTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9AD044F7FC3B64648FD38FF /* Pods_PicsurpTests.framework */; };
 		66FA62B539DE29DCBD461C16 /* Pods_Picsurp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89DD19D6ED63CD28834806C9 /* Pods_Picsurp.framework */; };
 		A0D6D90A211FE422008FBB91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D6D909211FE422008FBB91 /* AppDelegate.swift */; };
-		A0D6D90C211FE422008FBB91 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D6D90B211FE422008FBB91 /* ViewController.swift */; };
+		A0D6D90C211FE422008FBB91 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D6D90B211FE422008FBB91 /* MainViewController.swift */; };
 		A0D6D90F211FE422008FBB91 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0D6D90D211FE422008FBB91 /* Main.storyboard */; };
 		A0D6D911211FE424008FBB91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0D6D910211FE424008FBB91 /* Assets.xcassets */; };
 		A0D6D914211FE424008FBB91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0D6D912211FE424008FBB91 /* LaunchScreen.storyboard */; };
@@ -52,7 +52,7 @@
 		89DD19D6ED63CD28834806C9 /* Pods_Picsurp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Picsurp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0D6D906211FE422008FBB91 /* Picsurp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Picsurp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0D6D909211FE422008FBB91 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A0D6D90B211FE422008FBB91 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A0D6D90B211FE422008FBB91 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		A0D6D90E211FE422008FBB91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A0D6D910211FE424008FBB91 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A0D6D913211FE424008FBB91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -151,7 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				A0D6D90D211FE422008FBB91 /* Main.storyboard */,
-				A0D6D90B211FE422008FBB91 /* ViewController.swift */,
+				A0D6D90B211FE422008FBB91 /* MainViewController.swift */,
 				A0D6D94D2120F551008FBB91 /* Login.storyboard */,
 				A0D6D95F212293A0008FBB91 /* LoginViewController.swift */,
 				A0D6D95B21228EDA008FBB91 /* Profile.storyboard */,
@@ -347,14 +347,28 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Picsurp/Pods-Picsurp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -424,7 +438,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0D6D960212293A0008FBB91 /* LoginViewController.swift in Sources */,
-				A0D6D90C211FE422008FBB91 /* ViewController.swift in Sources */,
+				A0D6D90C211FE422008FBB91 /* MainViewController.swift in Sources */,
 				A0D6D9622122954C008FBB91 /* ProfileViewController.swift in Sources */,
 				A0D6D90A211FE422008FBB91 /* AppDelegate.swift in Sources */,
 				A0D6D93A211FEAA0008FBB91 /* AppDelegate.m in Sources */,

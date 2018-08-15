@@ -9,14 +9,15 @@
 import Foundation
 import Firebase
 import FirebaseAuth
+import FirebaseFirestore
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate{
     
     @IBOutlet weak var usernameLabel: UILabel!
     var username:String = ""
-    var userInfo =          ["firstName": "WRONG",
-                             "lastName" : "WRONG",
-                             "email"    : "WRONG"]
+    var userInfo =          ["firstNameDB"       : "WRONG",
+                             "lastNameDB"        : "WRONG",
+                             "emailAddressDB"    : "WRONG"]
     
     @IBOutlet weak var gotologin: UIButton!
     
@@ -53,7 +54,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate{
             print(data["last_name"]!)
             print(data["email"]!)
             
-            self.userInfo["firstName"] = data["first_name"] as? String
+            self.userInfo["firstNameDB"]    = data["first_name"]    as? String
+            self.userInfo["lastNameDB"]     = data["last_name"]     as? String
+            self.userInfo["emailAddressDB"] = data["email"]         as? String
         })
     }
     
@@ -74,6 +77,19 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate{
             }
             // User is signed in
             //print("User signed in!")
+            // Add a new document with a generated ID
+            var ref: DocumentReference? = nil
+            ref = db.collection("users").addDocument(data: [
+                "firstName" :     self.userInfo["firstNameDB"],
+                "lastName"  :     self.userInfo["lastNameDB"],
+                "email"     :     self.userInfo["emailAddressDB"]
+            ]) { err in
+                if let err = err {
+                    print("Error adding document: \(err)")
+                } else {
+                    print("Document added with ID: \(ref!.documentID)")
+                }
+            }
         }
     }
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
@@ -87,10 +103,10 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate{
     // THIS SENDS DATA TO OTHER VCs
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        if segue.destination is ViewController
+        if segue.destination is MainViewController
         {
-            let vc = segue.destination as? ViewController
-            vc?.username = userInfo["firstName"]!
+            let vc = segue.destination as? MainViewController
+            vc?.username = userInfo["firstNameDB"]!
         }
     }
     

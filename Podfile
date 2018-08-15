@@ -8,6 +8,7 @@ target 'Picsurp' do
   # Pods for Picsurp
     pod 'Firebase/Core'
     pod 'Firebase/Auth'
+    pod 'Firebase/Firestore'
 
 
   target 'PicsurpTests' do
