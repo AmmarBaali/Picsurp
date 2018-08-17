@@ -42,20 +42,12 @@
                                     <segue destination="Of0-Qn-309" kind="show" id="rul-jH-rKL"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jV4-3s-Zp0">
-                                <rect key="frame" x="99" y="219" width="302" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="gotologin" destination="KV5-WM-8fW" id="BeF-0X-Ore"/>
-                        <outlet property="usernameLabel" destination="jV4-3s-Zp0" id="SJA-FN-xlp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -71,10 +63,10 @@
             </objects>
             <point key="canvasLocation" x="693" y="312"/>
         </scene>
-        <!--Storyboard Reference-->
+        <!--Profile-->
         <scene sceneID="rcN-RQ-POo">
             <objects>
-                <viewControllerPlaceholder id="Of0-Qn-309" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Profile" id="Of0-Qn-309" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PnA-Kw-Cbv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="603" y="659"/>

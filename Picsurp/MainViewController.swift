@@ -10,16 +10,13 @@ import UIKit
 
 class MainViewController: UIViewController{
 
-    var username:String = ""
-    @IBOutlet weak var usernameLabel:UILabel?
+    
     @IBOutlet weak var gotologin: UIButton!
     
 
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        usernameLabel?.text = username
-        
+        super.viewDidLoad()        
     }
 
 

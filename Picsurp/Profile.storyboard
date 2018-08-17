@@ -18,13 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Profile storyboard" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uDK-J2-hPe">
-                                <rect key="frame" x="65" y="116" width="137" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mWa-c2-eov">
                                 <rect key="frame" x="264" y="617" width="73" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -49,14 +42,29 @@
                                     <action selector="LogOutButton:" destination="BTX-HB-d4x" eventType="touchUpInside" id="apq-GY-5g2"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="24096d63.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="uFX-em-mhn">
+                                <rect key="frame" x="27" y="66" width="105" height="105"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Profile storyboard" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uDK-J2-hPe">
+                                <rect key="frame" x="144" y="66" width="215" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="bIv-zN-581"/>
                     </view>
+                    <connections>
+                        <outlet property="profileGreetingsLabel" destination="uDK-J2-hPe" id="aQZ-e7-jDI"/>
+                        <outlet property="profileImage" destination="uFX-em-mhn" id="nlR-5G-GM1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Og8-8d-A1X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-389" y="-77"/>
+            <point key="canvasLocation" x="-389.60000000000002" y="-77.811094452773617"/>
         </scene>
         <!--Login-->
         <scene sceneID="K8V-R8-NIn">
@@ -75,4 +83,7 @@
             <point key="canvasLocation" x="439" y="147"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="24096d63.jpg" width="1440" height="900"/>
+    </resources>
 </document>

@@ -15,9 +15,10 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate{
     
     @IBOutlet weak var usernameLabel: UILabel!
     var username:String = ""
-    var userInfo =          ["firstNameDB"       : "WRONG",
-                             "lastNameDB"        : "WRONG",
-                             "emailAddressDB"    : "WRONG"]
+    var firstNameString = "WRONG"
+    var lastNameString  = "WRONG"
+    var emailString     = "WRONG"
+    var FBid            = "WRONG"
     
     @IBOutlet weak var gotologin: UIButton!
     
@@ -39,7 +40,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate{
     
     func fetchProfile() {
         print("fetch profile")
-        let parameters = ["fields": "email, first_name, last_name, picture.type(large)"]
+        let parameters = ["fields": "email, id, first_name, last_name, picture.type(large)"]
         FBSDKGraphRequest(graphPath: "me", parameters: parameters).start(completionHandler: { (connection, result, error) -> Void in
             
             if error != nil{
@@ -47,50 +48,53 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate{
                 return
             }
             
-            //  print("Result: \(result)")
+            // Get the info from FB and set them locally
             let data:[String:AnyObject] = result as! [String : AnyObject]
             print("---USER INFO---")
             print(data["first_name"]!)
             print(data["last_name"]!)
             print(data["email"]!)
+            print(data["id"]!)
             
-            self.userInfo["firstNameDB"]    = data["first_name"]    as? String
-            self.userInfo["lastNameDB"]     = data["last_name"]     as? String
-            self.userInfo["emailAddressDB"] = data["email"]         as? String
+            self.firstNameString          = data["first_name"]            as! String
+            self.lastNameString           = data["last_name"]             as! String
+            self.emailString              = data["email"]                 as! String
+            self.FBid                     = data["id"]                    as! String
         })
     }
     
     
-    // THESE ARE MANDATORY 3
+    // THESE ARE 3 MANDATORY FUNCTIONS FOR FB AUTH TO WORK
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         print("completed login")
         
-        let storyboard = UIStoryboard(name: "Profile", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "ProfileStoryboardID") as UIViewController
-        present(vc, animated: true, completion: nil)
-        
+        // Retrieve user current session
         let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
         Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
             if let error = error {
                 print("Facebook authentication with Firebase error: ", error)
                 return
             }
-            // User is signed in
-            //print("User signed in!")
-            // Add a new document with a generated ID
-            var ref: DocumentReference? = nil
-            ref = db.collection("users").addDocument(data: [
-                "firstName" :     self.userInfo["firstNameDB"],
-                "lastName"  :     self.userInfo["lastNameDB"],
-                "email"     :     self.userInfo["emailAddressDB"]
-            ]) { err in
+            // User is signed in - WRITING DOC TO DB
+            print("* @ * @@ ********* Writing to DB")
+            db.collection("users").document(self.emailString).setData([
+                "firstName" :     self.firstNameString,
+                "lastName"  :     self.lastNameString,
+                "email"     :     self.emailString,
+                "id"        :     self.FBid
+                ]) { err in
                 if let err = err {
                     print("Error adding document: \(err)")
                 } else {
-                    print("Document added with ID: \(ref!.documentID)")
+                    print("Document added with ID: \(self.emailString)")
                 }
             }
         }
+        
+        //Go to Profile
+        let storyboard = UIStoryboard(name: "Profile", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "ProfileStoryboardID") as UIViewController
+        present(vc, animated: true, completion: nil)
     }
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
     }
@@ -98,15 +102,18 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate{
         return true
     }
     
-    
-    
     // THIS SENDS DATA TO OTHER VCs
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if segue.destination is MainViewController
         {
             let vc = segue.destination as? MainViewController
-            vc?.username = userInfo["firstNameDB"]!
+        }
+        
+        if segue.destination is ProfileViewController
+        {
+            let vc = segue.destination as? ProfileViewController
+            vc?.emailAddress = emailString
         }
     }
     

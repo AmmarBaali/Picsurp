@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Picsurp/LoginViewController.swift"
+            timestampString = "556178577.794163"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "LoginViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Picsurp.LoginViewController.firstNameString.getter : Swift.String"
+                  moduleName = "Picsurp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ammar/Documents/app/Picsurp/Picsurp/Picsurp/LoginViewController.swift"
+                  timestampString = "556177027.028844"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "116">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Picsurp.LoginViewController.firstNameString.setter : Swift.String"
+                  moduleName = "Picsurp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ammar/Documents/app/Picsurp/Picsurp/Picsurp/LoginViewController.swift"
+                  timestampString = "556177027.0371079"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "156">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Picsurp.LoginViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; Picsurp.LoginViewController"
+                  moduleName = "Picsurp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ammar/Documents/app/Picsurp/Picsurp/Picsurp/LoginViewController.swift"
+                  timestampString = "556177027.040769"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "388">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Picsurp.LoginViewController.init(coder: __ObjC.NSCoder) -&gt; Swift.Optional&lt;Picsurp.LoginViewController&gt;"
+                  moduleName = "Picsurp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ammar/Documents/app/Picsurp/Picsurp/Picsurp/LoginViewController.swift"
+                  timestampString = "556177027.045603"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "344">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Picsurp/LoginViewController.swift"
+            timestampString = "556178577.794788"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "loginButton(_:didCompleteWith:error:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Picsurp/ProfileViewController.swift"
+            timestampString = "556178577.795208"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "ProfileViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Picsurp.ProfileViewController.firstName.getter : Swift.String"
+                  moduleName = "Picsurp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ammar/Documents/app/Picsurp/Picsurp/Picsurp/ProfileViewController.swift"
+                  timestampString = "556178325.6277829"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "116">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Picsurp.ProfileViewController.firstName.setter : Swift.String"
+                  moduleName = "Picsurp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ammar/Documents/app/Picsurp/Picsurp/Picsurp/ProfileViewController.swift"
+                  timestampString = "556178325.634077"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "156">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Picsurp.ProfileViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; Picsurp.ProfileViewController"
+                  moduleName = "Picsurp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ammar/Documents/app/Picsurp/Picsurp/Picsurp/ProfileViewController.swift"
+                  timestampString = "556178325.640211"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "276">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Picsurp.ProfileViewController.init(coder: __ObjC.NSCoder) -&gt; Swift.Optional&lt;Picsurp.ProfileViewController&gt;"
+                  moduleName = "Picsurp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ammar/Documents/app/Picsurp/Picsurp/Picsurp/ProfileViewController.swift"
+                  timestampString = "556178325.646208"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "232">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
