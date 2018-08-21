@@ -18,27 +18,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Login Storyboard" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ogt-gG-fj7">
-                                <rect key="frame" x="199" y="194" width="132" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yog-yZ-LRD">
-                                <rect key="frame" x="9" y="755" width="83" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mf2-2U-V4y">
+                                <rect key="frame" x="10" y="748" width="111" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="go to profile"/>
                                 <connections>
-                                    <segue destination="07V-R6-hci" kind="show" id="bCf-4e-PrD"/>
+                                    <action selector="ProfileButton:" destination="3FA-CL-hTl" eventType="touchUpInside" id="zO1-qc-Kzj"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Picsurp_500.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Pbu-hd-vSg">
+                                <rect key="frame" x="67" y="219" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zqE-p7-ZeJ">
-                                <rect key="frame" x="251" y="762" width="108" height="16"/>
+                                <rect key="frame" x="251" y="755" width="108" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="go to main"/>
                                 <connections>
-                                    <segue destination="OMP-TT-h5g" kind="show" identifier="segue" id="elJ-oX-biB"/>
+                                    <action selector="MainButton:" destination="3FA-CL-hTl" eventType="touchUpInside" id="pFc-xR-ikz"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -50,21 +47,8 @@
             </objects>
             <point key="canvasLocation" x="-164" y="-44.334975369458128"/>
         </scene>
-        <!--Main-->
-        <scene sceneID="QXA-Sk-4QU">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Main" id="OMP-TT-h5g" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jyC-Aq-7az" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="370" y="127"/>
-        </scene>
-        <!--Profile-->
-        <scene sceneID="IQW-Yn-Vbu">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Profile" id="07V-R6-hci" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ngz-8v-Xzk" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="328" y="248"/>
-        </scene>
     </scenes>
+    <resources>
+        <image name="Picsurp_500.jpg" width="500" height="500"/>
+    </resources>
 </document>

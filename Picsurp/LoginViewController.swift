@@ -13,14 +13,24 @@ import FirebaseFirestore
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate{
     
-    @IBOutlet weak var usernameLabel: UILabel!
-    var username:String = ""
-    var firstNameString = "WRONG"
-    var lastNameString  = "WRONG"
-    var emailString     = "WRONG"
-    var FBid            = "WRONG"
+
+    var firstNameString = "INVALID"
+    var lastNameString  = "INVALID"
+    var emailString     = "INVALID"
+    var FBidString      = "INVALID"
+   
+    let userDataFile    = "UserData"
+    
+    
     
     @IBOutlet weak var gotologin: UIButton!
+    
+    @IBAction func ProfileButton(_ sender: Any) {
+        self.GoToProfile()
+    }
+    @IBAction func MainButton(_ sender: Any) {
+        self.GoToMain()
+    }
     
     let loginButton: FBSDKLoginButton = {
         let button = FBSDKLoginButton()
@@ -31,43 +41,20 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(loginButton)
-        loginButton.center = view.center
+        
+        let position = CGPoint(x: 185, y: 550)
+        loginButton.center = position
         loginButton.delegate = self
-        fetchProfile()
-        
     }
     
-    
-    func fetchProfile() {
-        print("fetch profile")
-        let parameters = ["fields": "email, id, first_name, last_name, picture.type(large)"]
-        FBSDKGraphRequest(graphPath: "me", parameters: parameters).start(completionHandler: { (connection, result, error) -> Void in
-            
-            if error != nil{
-                print(error)
-                return
-            }
-            
-            // Get the info from FB and set them locally
-            let data:[String:AnyObject] = result as! [String : AnyObject]
-            print("---USER INFO---")
-            print(data["first_name"]!)
-            print(data["last_name"]!)
-            print(data["email"]!)
-            print(data["id"]!)
-            
-            self.firstNameString          = data["first_name"]            as! String
-            self.lastNameString           = data["last_name"]             as! String
-            self.emailString              = data["email"]                 as! String
-            self.FBid                     = data["id"]                    as! String
-        })
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
-    
-    // THESE ARE 3 MANDATORY FUNCTIONS FOR FB AUTH TO WORK
+    // THESE 3 ARE MANDATORY FUNCTIONS FOR FB AUTH TO WORK
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-        print("completed login")
-        
+        print("Starting login")
+        getUserDataFromFacebook()
         // Retrieve user current session
         let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
         Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
@@ -81,20 +68,16 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate{
                 "firstName" :     self.firstNameString,
                 "lastName"  :     self.lastNameString,
                 "email"     :     self.emailString,
-                "id"        :     self.FBid
-                ]) { err in
+                "id"        :     self.FBidString
+            ]) { err in
                 if let err = err {
                     print("Error adding document: \(err)")
                 } else {
-                    print("Document added with ID: \(self.emailString)")
+                    print("Document added with email: \(self.emailString)")
                 }
             }
         }
-        
-        //Go to Profile
-        let storyboard = UIStoryboard(name: "Profile", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "ProfileStoryboardID") as UIViewController
-        present(vc, animated: true, completion: nil)
+        self.GoToProfile()
     }
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
     }
@@ -102,26 +85,92 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate{
         return true
     }
     
-    // THIS SENDS DATA TO OTHER VCs
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        if segue.destination is MainViewController
-        {
-            let vc = segue.destination as? MainViewController
+    
+    func getUserDataFromFacebook() {
+        print("---Getting Info From Facebook---")
+        let parameters = ["fields": "email, id, first_name, last_name"]
+        FBSDKGraphRequest(graphPath: "me", parameters: parameters).start(completionHandler: { (connection, result, error) -> Void in
+            print(self.emailString)
+             Helper().printDocumentDirectoryContent()
+            let data:[String:AnyObject] = result as! [String : AnyObject]
+            if error != nil{
+                print(error!)
+                return
+            }
+            
+             Helper().createFileinDocumentDirectory(filename: self.userDataFile)
+            
+            print("---USER DATA---")
+            print(data["first_name"]!)
+            print(data["last_name"]!)
+            print(data["email"]!)
+            print(data["id"]!)
+            
+            self.firstNameString          = data["first_name"]            as! String
+            self.lastNameString           = data["last_name"]             as! String
+            self.emailString              = data["email"]                 as! String
+            self.FBidString               = data["id"]                    as! String
+
+            Helper().writeToFileInDocumentDirectory(filename: self.userDataFile, textToAdd: data["first_name"]   as! String)
+            Helper().writeToFileInDocumentDirectory(filename: self.userDataFile, textToAdd: data["last_name"]    as! String)
+            Helper().writeToFileInDocumentDirectory(filename: self.userDataFile, textToAdd: data["email"]        as! String)
+            Helper().writeToFileInDocumentDirectory(filename: self.userDataFile, textToAdd: data["id"]           as! String)
+        })
+    }
+
+    func GoToProfile(){
+        print("Current status: \(FBSDKAccessToken.current())")
+        if(FBSDKAccessToken.current() != nil){
+            let storyboard = UIStoryboard(name: "Profile", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "ProfileStoryboardID") as! ProfileViewController
+            vc.modalTransitionStyle = .flipHorizontal
+            present(vc, animated: true, completion: nil)
+        } else {
+            print("User not logged in")
         }
-        
-        if segue.destination is ProfileViewController
-        {
-            let vc = segue.destination as? ProfileViewController
-            vc?.emailAddress = emailString
+
+    }
+    func GoToMain(){
+    print("Current status: \(FBSDKAccessToken.current())")
+    if(FBSDKAccessToken.current() != nil){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "MainStoryboardID") as! MainViewController
+        present(vc, animated: true, completion: nil)
+    } else {
+        print("User not logged in")
         }
     }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+}
+
+
+extension String {
+    func appendLineToURL(fileURL: URL) throws {
+        try (self + "\n").appendToURL(fileURL: fileURL)
+    }
     
-    
+    func appendToURL(fileURL: URL) throws {
+        let data = self.data(using: String.Encoding.utf8)!
+        try data.append(fileURL: fileURL)
+    }
+}
+
+
+extension Data {
+    func append(fileURL: URL) throws {
+        if let fileHandle = FileHandle(forWritingAtPath: fileURL.path) {
+            defer {
+                fileHandle.closeFile()
+            }
+            fileHandle.seekToEndOfFile()
+            fileHandle.write(self)
+        }
+        else {
+            try write(to: fileURL, options: .atomic)
+        }
+    }
 }
