@@ -10,8 +10,8 @@
 		28546181E796460E450A8CE1 /* Pods_PicsurpTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9AD044F7FC3B64648FD38FF /* Pods_PicsurpTests.framework */; };
 		66FA62B539DE29DCBD461C16 /* Pods_Picsurp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89DD19D6ED63CD28834806C9 /* Pods_Picsurp.framework */; };
 		A0D6D90A211FE422008FBB91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D6D909211FE422008FBB91 /* AppDelegate.swift */; };
-		A0D6D90C211FE422008FBB91 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D6D90B211FE422008FBB91 /* MainViewController.swift */; };
-		A0D6D90F211FE422008FBB91 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0D6D90D211FE422008FBB91 /* Main.storyboard */; };
+		A0D6D90C211FE422008FBB91 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D6D90B211FE422008FBB91 /* CameraViewController.swift */; };
+		A0D6D90F211FE422008FBB91 /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0D6D90D211FE422008FBB91 /* Camera.storyboard */; };
 		A0D6D911211FE424008FBB91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0D6D910211FE424008FBB91 /* Assets.xcassets */; };
 		A0D6D914211FE424008FBB91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0D6D912211FE424008FBB91 /* LaunchScreen.storyboard */; };
 		A0D6D91F211FE424008FBB91 /* PicsurpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D6D91E211FE424008FBB91 /* PicsurpTests.swift */; };
@@ -27,7 +27,12 @@
 		A0D6D9642123B6DE008FBB91 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A0D6D9632123B6DD008FBB91 /* GoogleService-Info.plist */; };
 		A0D6D974212BC5ED008FBB91 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D6D973212BC5ED008FBB91 /* Helper.swift */; };
 		A0D6D976212BD2CC008FBB91 /* Picsurp_500.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A0D6D975212BD2CC008FBB91 /* Picsurp_500.jpg */; };
-		A0D6D978212BD9E7008FBB91 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = A0D6D977212BD9E6008FBB91 /* loading.gif */; };
+		A0D6D987212D18FD008FBB91 /* settings_64.png in Resources */ = {isa = PBXBuildFile; fileRef = A0D6D984212D18F6008FBB91 /* settings_64.png */; };
+		A0D6D988212D18FD008FBB91 /* camera_64.png in Resources */ = {isa = PBXBuildFile; fileRef = A0D6D985212D18F9008FBB91 /* camera_64.png */; };
+		A0D6D989212D18FD008FBB91 /* profile_64.png in Resources */ = {isa = PBXBuildFile; fileRef = A0D6D986212D18FD008FBB91 /* profile_64.png */; };
+		A0D6D98B212D1A2C008FBB91 /* menu_64.png in Resources */ = {isa = PBXBuildFile; fileRef = A0D6D98A212D1A2C008FBB91 /* menu_64.png */; };
+		A0D6D98E212D1B74008FBB91 /* shutter_64.png in Resources */ = {isa = PBXBuildFile; fileRef = A0D6D98C212D1B70008FBB91 /* shutter_64.png */; };
+		A0D6D98F212D1B74008FBB91 /* shutter2_128.png in Resources */ = {isa = PBXBuildFile; fileRef = A0D6D98D212D1B73008FBB91 /* shutter2_128.png */; };
 		EC6113A1E45D6F029B7965D6 /* Pods_PicsurpUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D11CB5FD5DCDF804AF52EFB3 /* Pods_PicsurpUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,8 +60,8 @@
 		89DD19D6ED63CD28834806C9 /* Pods_Picsurp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Picsurp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0D6D906211FE422008FBB91 /* Picsurp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Picsurp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0D6D909211FE422008FBB91 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A0D6D90B211FE422008FBB91 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		A0D6D90E211FE422008FBB91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A0D6D90B211FE422008FBB91 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		A0D6D90E211FE422008FBB91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Camera.storyboard; sourceTree = "<group>"; };
 		A0D6D910211FE424008FBB91 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A0D6D913211FE424008FBB91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A0D6D915211FE424008FBB91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -78,7 +83,12 @@
 		A0D6D9632123B6DD008FBB91 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A0D6D973212BC5ED008FBB91 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		A0D6D975212BD2CC008FBB91 /* Picsurp_500.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Picsurp_500.jpg; sourceTree = "<group>"; };
-		A0D6D977212BD9E6008FBB91 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
+		A0D6D984212D18F6008FBB91 /* settings_64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings_64.png; sourceTree = "<group>"; };
+		A0D6D985212D18F9008FBB91 /* camera_64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_64.png; sourceTree = "<group>"; };
+		A0D6D986212D18FD008FBB91 /* profile_64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile_64.png; sourceTree = "<group>"; };
+		A0D6D98A212D1A2C008FBB91 /* menu_64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_64.png; sourceTree = "<group>"; };
+		A0D6D98C212D1B70008FBB91 /* shutter_64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shutter_64.png; sourceTree = "<group>"; };
+		A0D6D98D212D1B73008FBB91 /* shutter2_128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shutter2_128.png; sourceTree = "<group>"; };
 		C2E833B07C9CDFF8B741234B /* Pods-PicsurpUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PicsurpUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PicsurpUITests/Pods-PicsurpUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D11CB5FD5DCDF804AF52EFB3 /* Pods_PicsurpUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PicsurpUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA6CE0B3D276B8F44167FC66 /* Pods-PicsurpTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PicsurpTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PicsurpTests/Pods-PicsurpTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -156,11 +166,10 @@
 		A0D6D908211FE422008FBB91 /* Picsurp */ = {
 			isa = PBXGroup;
 			children = (
-				A0D6D975212BD2CC008FBB91 /* Picsurp_500.jpg */,
-				A0D6D977212BD9E6008FBB91 /* loading.gif */,
+				A0D6D979212D0F1F008FBB91 /* images */,
 				A0D6D973212BC5ED008FBB91 /* Helper.swift */,
-				A0D6D90D211FE422008FBB91 /* Main.storyboard */,
-				A0D6D90B211FE422008FBB91 /* MainViewController.swift */,
+				A0D6D90D211FE422008FBB91 /* Camera.storyboard */,
+				A0D6D90B211FE422008FBB91 /* CameraViewController.swift */,
 				A0D6D94D2120F551008FBB91 /* Login.storyboard */,
 				A0D6D95F212293A0008FBB91 /* LoginViewController.swift */,
 				A0D6D95B21228EDA008FBB91 /* Profile.storyboard */,
@@ -202,6 +211,20 @@
 				A0D6D93C211FECEE008FBB91 /* FBSDKLoginKit.framework */,
 			);
 			path = Framework;
+			sourceTree = "<group>";
+		};
+		A0D6D979212D0F1F008FBB91 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				A0D6D985212D18F9008FBB91 /* camera_64.png */,
+				A0D6D986212D18FD008FBB91 /* profile_64.png */,
+				A0D6D98C212D1B70008FBB91 /* shutter_64.png */,
+				A0D6D98D212D1B73008FBB91 /* shutter2_128.png */,
+				A0D6D98A212D1A2C008FBB91 /* menu_64.png */,
+				A0D6D984212D18F6008FBB91 /* settings_64.png */,
+				A0D6D975212BD2CC008FBB91 /* Picsurp_500.jpg */,
+			);
+			path = images;
 			sourceTree = "<group>";
 		};
 		DB27440A21B3C426B4A1CBBF /* Frameworks */ = {
@@ -323,13 +346,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0D6D98B212D1A2C008FBB91 /* menu_64.png in Resources */,
 				A0D6D976212BD2CC008FBB91 /* Picsurp_500.jpg in Resources */,
 				A0D6D914211FE424008FBB91 /* LaunchScreen.storyboard in Resources */,
+				A0D6D988212D18FD008FBB91 /* camera_64.png in Resources */,
 				A0D6D94E2120F551008FBB91 /* Login.storyboard in Resources */,
 				A0D6D95C21228EDA008FBB91 /* Profile.storyboard in Resources */,
 				A0D6D911211FE424008FBB91 /* Assets.xcassets in Resources */,
-				A0D6D978212BD9E7008FBB91 /* loading.gif in Resources */,
-				A0D6D90F211FE422008FBB91 /* Main.storyboard in Resources */,
+				A0D6D98E212D1B74008FBB91 /* shutter_64.png in Resources */,
+				A0D6D987212D18FD008FBB91 /* settings_64.png in Resources */,
+				A0D6D98F212D1B74008FBB91 /* shutter2_128.png in Resources */,
+				A0D6D90F211FE422008FBB91 /* Camera.storyboard in Resources */,
+				A0D6D989212D18FD008FBB91 /* profile_64.png in Resources */,
 				A0D6D9642123B6DE008FBB91 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -449,7 +477,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0D6D960212293A0008FBB91 /* LoginViewController.swift in Sources */,
-				A0D6D90C211FE422008FBB91 /* MainViewController.swift in Sources */,
+				A0D6D90C211FE422008FBB91 /* CameraViewController.swift in Sources */,
 				A0D6D974212BC5ED008FBB91 /* Helper.swift in Sources */,
 				A0D6D9622122954C008FBB91 /* ProfileViewController.swift in Sources */,
 				A0D6D90A211FE422008FBB91 /* AppDelegate.swift in Sources */,
@@ -489,12 +517,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		A0D6D90D211FE422008FBB91 /* Main.storyboard */ = {
+		A0D6D90D211FE422008FBB91 /* Camera.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				A0D6D90E211FE422008FBB91 /* Base */,
 			);
-			name = Main.storyboard;
+			name = Camera.storyboard;
 			sourceTree = "<group>";
 		};
 		A0D6D912211FE424008FBB91 /* LaunchScreen.storyboard */ = {

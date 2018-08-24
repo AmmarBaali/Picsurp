@@ -33,9 +33,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zqE-p7-ZeJ">
                                 <rect key="frame" x="251" y="755" width="108" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="go to main"/>
+                                <state key="normal" title="go to camera"/>
                                 <connections>
-                                    <action selector="MainButton:" destination="3FA-CL-hTl" eventType="touchUpInside" id="pFc-xR-ikz"/>
+                                    <action selector="CameraButton:" destination="3FA-CL-hTl" eventType="touchUpInside" id="pFc-xR-ikz"/>
                                 </connections>
                             </button>
                         </subviews>

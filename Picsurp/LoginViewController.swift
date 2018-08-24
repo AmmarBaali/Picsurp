@@ -21,15 +21,11 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate{
    
     let userDataFile    = "UserData"
     
-    
-    
-    @IBOutlet weak var gotologin: UIButton!
-    
     @IBAction func ProfileButton(_ sender: Any) {
         self.GoToProfile()
     }
-    @IBAction func MainButton(_ sender: Any) {
-        self.GoToMain()
+    @IBAction func CameraButton(_ sender: Any) {
+        self.GoToCamera()
     }
     
     let loginButton: FBSDKLoginButton = {
@@ -119,7 +115,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate{
     }
 
     func GoToProfile(){
-        print("Current status: \(FBSDKAccessToken.current())")
         if(FBSDKAccessToken.current() != nil){
             let storyboard = UIStoryboard(name: "Profile", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "ProfileStoryboardID") as! ProfileViewController
@@ -130,11 +125,10 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate{
         }
 
     }
-    func GoToMain(){
-    print("Current status: \(FBSDKAccessToken.current())")
+    func GoToCamera(){
     if(FBSDKAccessToken.current() != nil){
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "MainStoryboardID") as! MainViewController
+        let storyboard = UIStoryboard(name: "Camera", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "CameraStoryboardID") as! CameraViewController
         present(vc, animated: true, completion: nil)
     } else {
         print("User not logged in")

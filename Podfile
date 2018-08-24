@@ -10,7 +10,6 @@ target 'Picsurp' do
     pod 'Firebase/Auth'
     pod 'Firebase/Firestore'
 
-
   target 'PicsurpTests' do
     inherit! :search_paths
     # Pods for testing

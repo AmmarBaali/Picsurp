@@ -1,5 +1,5 @@
 //
-//  MainViewController.swift
+//  CameraViewController.swift
 //  Picsurp
 //
 //  Created by Ammar Baali on 2018-08-11.
@@ -8,10 +8,16 @@
 
 import UIKit
 
-class MainViewController: UIViewController{
-
-    var emailAddress    = ""
+class CameraViewController: UIViewController{
+  
+    @IBOutlet weak var captureButton: UIButton!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+ 
+
+
     @IBAction func ProfileButton(_ sender: Any) {
         self.GoToProfile()
     }
@@ -19,15 +25,6 @@ class MainViewController: UIViewController{
         self.GoToLogin()
     }
     
-    
-    @IBOutlet weak var gotologin: UIButton!
-    
-
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()        
-    }
-
     func GoToProfile(){
         let storyboard = UIStoryboard(name: "Profile", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "ProfileStoryboardID") as! ProfileViewController
@@ -46,4 +43,3 @@ class MainViewController: UIViewController{
     }
 
 }
-

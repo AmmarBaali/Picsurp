@@ -24,8 +24,8 @@ class ProfileViewController: UIViewController{
     @IBAction func LoginButton(_ sender: Any) {
         self.GoToLogin()
     }
-    @IBAction func MainButton(_ sender: Any) {
-        self.GoToMain()
+    @IBAction func CameraButton(_ sender: Any) {
+        self.GoToCamera()
     }
     
     
@@ -62,9 +62,9 @@ class ProfileViewController: UIViewController{
         let vc = storyboard.instantiateViewController(withIdentifier: "LoginStoryboardID") as! LoginViewController
         present(vc, animated: true, completion: nil)
     }
-    func GoToMain(){
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "MainStoryboardID") as! MainViewController
+    func GoToCamera(){
+        let storyboard = UIStoryboard(name: "Camera", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "CameraStoryboardID") as! CameraViewController
         vc.modalTransitionStyle = .crossDissolve
         present(vc, animated: true, completion: nil)
     }
