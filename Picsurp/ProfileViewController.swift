@@ -13,7 +13,6 @@ class ProfileViewController: UIViewController{
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var profileGreetingsLabel: UILabel!
     
-    
     //Logout and go to login page
     @IBAction func LogOutButton(_ sender: Any) {
         let loginManager = FBSDKLoginManager()
@@ -27,7 +26,6 @@ class ProfileViewController: UIViewController{
     @IBAction func CameraButton(_ sender: Any) {
         self.GoToCamera()
     }
-    
     
     
     override func viewDidLoad() {

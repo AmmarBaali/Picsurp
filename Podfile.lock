@@ -102,11 +102,13 @@ PODS:
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
   - Protobuf (3.6.1)
+  - SwiftyCam (2.7.0)
 
 DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Firestore
+  - SwiftyCam (from `https://github.com/Awalz/SwiftyCam.git`, branch `Swift4`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -129,6 +131,16 @@ SPEC REPOS:
     - nanopb
     - Protobuf
 
+EXTERNAL SOURCES:
+  SwiftyCam:
+    :branch: Swift4
+    :git: https://github.com/Awalz/SwiftyCam.git
+
+CHECKOUT OPTIONS:
+  SwiftyCam:
+    :commit: 56848489531e1343fecf7244bb87af1a5a343e1c
+    :git: https://github.com/Awalz/SwiftyCam.git
+
 SPEC CHECKSUMS:
   BoringSSL: e10f92a27043805c01071fe815a5cd98ae8212e7
   Firebase: 8c957f9cb3852b519180fb378801b7eeeba4d288
@@ -148,7 +160,8 @@ SPEC CHECKSUMS:
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
+  SwiftyCam: 7c826b73a5b208677aee29390582c771bf748661
 
-PODFILE CHECKSUM: c6047a998171fde85127052a24561cea94f0ae9b
+PODFILE CHECKSUM: dea895a03eebea34eddcea5707e43ccd3c9374b8
 
 COCOAPODS: 1.5.3
