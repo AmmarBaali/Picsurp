@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		28546181E796460E450A8CE1 /* Pods_PicsurpTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9AD044F7FC3B64648FD38FF /* Pods_PicsurpTests.framework */; };
 		66FA62B539DE29DCBD461C16 /* Pods_Picsurp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89DD19D6ED63CD28834806C9 /* Pods_Picsurp.framework */; };
+		A02018DB2142280100BC521C /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = A02018DA214227FF00BC521C /* close.png */; };
 		A0D6D90A211FE422008FBB91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D6D909211FE422008FBB91 /* AppDelegate.swift */; };
 		A0D6D90C211FE422008FBB91 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D6D90B211FE422008FBB91 /* CameraViewController.swift */; };
 		A0D6D90F211FE422008FBB91 /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0D6D90D211FE422008FBB91 /* Camera.storyboard */; };
@@ -41,6 +42,8 @@
 		A0D6D9B121323314008FBB91 /* SwiftyRecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D6D9B021323313008FBB91 /* SwiftyRecordButton.swift */; };
 		A0D6D9B421323449008FBB91 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D6D9B221323447008FBB91 /* VideoViewController.swift */; };
 		A0D6D9B521323449008FBB91 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D6D9B321323449008FBB91 /* PhotoViewController.swift */; };
+		A0D6D9BA213257F3008FBB91 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D6D9B8213257F3008FBB91 /* PreviewViewController.swift */; };
+		A0D6D9BE21325991008FBB91 /* Preview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0D6D9BD21325991008FBB91 /* Preview.storyboard */; };
 		EC6113A1E45D6F029B7965D6 /* Pods_PicsurpUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D11CB5FD5DCDF804AF52EFB3 /* Pods_PicsurpUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +69,7 @@
 		1828A742BEA264E8D015CF42 /* Pods-Picsurp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Picsurp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Picsurp/Pods-Picsurp.debug.xcconfig"; sourceTree = "<group>"; };
 		20D3D44292F1F05357AF8E84 /* Pods-PicsurpUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PicsurpUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PicsurpUITests/Pods-PicsurpUITests.release.xcconfig"; sourceTree = "<group>"; };
 		89DD19D6ED63CD28834806C9 /* Pods_Picsurp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Picsurp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A02018DA214227FF00BC521C /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
 		A0D6D906211FE422008FBB91 /* Picsurp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Picsurp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0D6D909211FE422008FBB91 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0D6D90B211FE422008FBB91 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +109,8 @@
 		A0D6D9B021323313008FBB91 /* SwiftyRecordButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyRecordButton.swift; sourceTree = "<group>"; };
 		A0D6D9B221323447008FBB91 /* VideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		A0D6D9B321323449008FBB91 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
+		A0D6D9B8213257F3008FBB91 /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
+		A0D6D9BD21325991008FBB91 /* Preview.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preview.storyboard; sourceTree = "<group>"; };
 		C2E833B07C9CDFF8B741234B /* Pods-PicsurpUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PicsurpUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PicsurpUITests/Pods-PicsurpUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D11CB5FD5DCDF804AF52EFB3 /* Pods_PicsurpUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PicsurpUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA6CE0B3D276B8F44167FC66 /* Pods-PicsurpTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PicsurpTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PicsurpTests/Pods-PicsurpTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -184,9 +190,10 @@
 			children = (
 				A0D6D9A5213231E2008FBB91 /* source */,
 				A0D6D979212D0F1F008FBB91 /* images */,
-				A0D6D973212BC5ED008FBB91 /* Helper.swift */,
 				A0D6D90D211FE422008FBB91 /* Camera.storyboard */,
 				A0D6D90B211FE422008FBB91 /* CameraViewController.swift */,
+				A0D6D9BD21325991008FBB91 /* Preview.storyboard */,
+				A0D6D9B8213257F3008FBB91 /* PreviewViewController.swift */,
 				A0D6D94D2120F551008FBB91 /* Login.storyboard */,
 				A0D6D95F212293A0008FBB91 /* LoginViewController.swift */,
 				A0D6D95B21228EDA008FBB91 /* Profile.storyboard */,
@@ -201,6 +208,7 @@
 				A0D6D9B021323313008FBB91 /* SwiftyRecordButton.swift */,
 				A0D6D9B321323449008FBB91 /* PhotoViewController.swift */,
 				A0D6D9B221323447008FBB91 /* VideoViewController.swift */,
+				A0D6D973212BC5ED008FBB91 /* Helper.swift */,
 			);
 			path = Picsurp;
 			sourceTree = "<group>";
@@ -242,6 +250,7 @@
 				A0D6D98D212D1B73008FBB91 /* shutter2_128.png */,
 				A0D6D98A212D1A2C008FBB91 /* menu_64.png */,
 				A0D6D984212D18F6008FBB91 /* settings_64.png */,
+				A02018DA214227FF00BC521C /* close.png */,
 				A0D6D975212BD2CC008FBB91 /* Picsurp_500.jpg */,
 			);
 			path = images;
@@ -382,8 +391,10 @@
 				A0D6D98B212D1A2C008FBB91 /* menu_64.png in Resources */,
 				A0D6D976212BD2CC008FBB91 /* Picsurp_500.jpg in Resources */,
 				A0D6D914211FE424008FBB91 /* LaunchScreen.storyboard in Resources */,
+				A02018DB2142280100BC521C /* close.png in Resources */,
 				A0D6D988212D18FD008FBB91 /* camera_64.png in Resources */,
 				A0D6D94E2120F551008FBB91 /* Login.storyboard in Resources */,
+				A0D6D9BE21325991008FBB91 /* Preview.storyboard in Resources */,
 				A0D6D95C21228EDA008FBB91 /* Profile.storyboard in Resources */,
 				A0D6D911211FE424008FBB91 /* Assets.xcassets in Resources */,
 				A0D6D98E212D1B74008FBB91 /* shutter_64.png in Resources */,
@@ -519,6 +530,7 @@
 				A0D6D9B421323449008FBB91 /* VideoViewController.swift in Sources */,
 				A0D6D9AB21323208008FBB91 /* PreviewView.swift in Sources */,
 				A0D6D974212BC5ED008FBB91 /* Helper.swift in Sources */,
+				A0D6D9BA213257F3008FBB91 /* PreviewViewController.swift in Sources */,
 				A0D6D9622122954C008FBB91 /* ProfileViewController.swift in Sources */,
 				A0D6D9AD21323208008FBB91 /* SwiftyCamButton.swift in Sources */,
 				A0D6D90A211FE422008FBB91 /* AppDelegate.swift in Sources */,

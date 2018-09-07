@@ -17,14 +17,14 @@ class ProfileViewController: UIViewController{
     @IBAction func LogOutButton(_ sender: Any) {
         let loginManager = FBSDKLoginManager()
         loginManager.logOut()
-        self.GoToLogin()
+        self.goToLogin()
     }
     
-    @IBAction func LoginButton(_ sender: Any) {
-        self.GoToLogin()
+    @IBAction func loginButton(_ sender: Any) {
+        self.goToLogin()
     }
-    @IBAction func CameraButton(_ sender: Any) {
-        self.GoToCamera()
+    @IBAction func cameraButton(_ sender: Any) {
+        self.goToCamera()
     }
     
     
@@ -55,12 +55,12 @@ class ProfileViewController: UIViewController{
             self.profileImage.imageFromServerURL(urlString: urlStr!)
     }
     
-    func GoToLogin(){
+    func goToLogin(){
         let storyboard = UIStoryboard(name: "Login", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "LoginStoryboardID") as! LoginViewController
         present(vc, animated: true, completion: nil)
     }
-    func GoToCamera(){
+    func goToCamera(){
         let storyboard = UIStoryboard(name: "Camera", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "CameraStoryboardID") as! CameraViewController
         vc.modalTransitionStyle = .crossDissolve

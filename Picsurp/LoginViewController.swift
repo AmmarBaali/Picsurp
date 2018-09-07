@@ -12,7 +12,6 @@ import FirebaseAuth
 import FirebaseFirestore
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate{
-    
 
     var firstNameString = "INVALID"
     var lastNameString  = "INVALID"
@@ -21,11 +20,11 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate{
    
     let userDataFile    = "UserData"
     
-    @IBAction func ProfileButton(_ sender: Any) {
-        self.GoToProfile()
+    @IBAction func profileButton(_ sender: Any) {
+        self.goToProfile()
     }
-    @IBAction func CameraButton(_ sender: Any) {
-        self.GoToCamera()
+    @IBAction func cameraButton(_ sender: Any) {
+        self.goToCamera()
     }
     
     let loginButton: FBSDKLoginButton = {
@@ -41,6 +40,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate{
         let position = CGPoint(x: 185, y: 550)
         loginButton.center = position
         loginButton.delegate = self
+        Helper().deleteFileinDocumentDirectory(filename: "fileName.png")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -73,7 +73,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate{
                 }
             }
         }
-        self.GoToProfile()
+        self.goToProfile()
     }
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
     }
@@ -114,7 +114,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate{
         })
     }
 
-    func GoToProfile(){
+    func goToProfile(){
         if(FBSDKAccessToken.current() != nil){
             let storyboard = UIStoryboard(name: "Profile", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "ProfileStoryboardID") as! ProfileViewController
@@ -125,7 +125,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate{
         }
 
     }
-    func GoToCamera(){
+    func goToCamera(){
     if(FBSDKAccessToken.current() != nil){
         let storyboard = UIStoryboard(name: "Camera", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "CameraStoryboardID") as! CameraViewController

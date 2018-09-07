@@ -13,31 +13,35 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
   
     @IBOutlet weak var captureButton: SwiftyRecordButton!
 
-    @IBOutlet weak var ProfileButton: UIButton!
+    @IBOutlet weak var profileButton: UIButton!
     @IBOutlet weak var previewImage: UIImageView!
+    
     @IBAction func captureButton(_ sender: Any) {
         takePhoto()
     }
-    @IBAction func ProfileButton(_ sender: Any) {
-        self.GoToProfile()
+    @IBAction func profileButton(_ sender: Any) {
+        self.goToProfile()
     }
-    @IBAction func LoginButton(_ sender: Any) {
-        self.GoToLogin()
+    @IBAction func loginButton(_ sender: Any) {
+        self.goToLogin()
     }
-    
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         cameraDelegate = self
-        view.bringSubview(toFront: ProfileButton)
+        view.bringSubview(toFront: profileButton)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        //captureButton.isEnabled = true
     }
     
     func swiftyCam(_ swiftyCam: SwiftyCamViewController, didTake photo: UIImage) {
         // Called when takePhoto() is called or if a SwiftyCamButton initiates a tap gesture
         // Returns a UIImage captured from the current session
-        
-        print("IT WORKS")
-        previewImage.image=photo
+        previewImage.image = photo
+        performSegue(withIdentifier: "toPreviewSegue", sender: self)
     }
     
     func swiftyCam(_ swiftyCam: SwiftyCamViewController, didBeginRecordingVideo camera: SwiftyCamViewController.CameraSelection) {
@@ -72,31 +76,46 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
         // Returns current camera selection
     }
 
+    func swiftyCamSessionDidStartRunning(_ swiftyCam: SwiftyCamViewController) {
+        //This happens when camera starts
+        captureButton.isEnabled = true
+    }
+    
+    func swiftyCamSessionDidStopRunning(_ swiftyCam: SwiftyCamViewController) {
+        //This happens when camera stops
+        captureButton.isEnabled = false
+    }
     
     
     
     
     
     
-    
-    
-    
-    
-    func GoToProfile(){
+    func goToProfile(){
         let storyboard = UIStoryboard(name: "Profile", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "ProfileStoryboardID") as! ProfileViewController
         vc.modalTransitionStyle = .crossDissolve
         present(vc, animated: true, completion: nil)
     }
-    func GoToLogin(){
+    func goToLogin(){
         let storyboard = UIStoryboard(name: "Login", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "LoginStoryboardID") as! LoginViewController
         present(vc, animated: true, completion: nil)
+    }
+    func goToPreview(){
+        let storyboard = UIStoryboard(name: "Preview", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "PreviewStoryboardID") as! PreviewViewController
+        present(vc, animated: false, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let dvc : PreviewViewController = segue.destination as! PreviewViewController
+        dvc.imageInPreview = previewImage.image
     }
 
 }
