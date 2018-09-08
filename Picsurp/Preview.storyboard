@@ -39,12 +39,25 @@
                                     <segue destination="xbI-AX-eva" kind="show" id="9YP-G6-sjo"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ps8-cK-45c">
+                                <rect key="frame" x="228" y="748" width="131" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Save to camera roll"/>
+                                <connections>
+                                    <action selector="saveToCameraRoll:" destination="XEE-G2-lUq" eventType="touchUpInside" id="NQo-xJ-uO3"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="green_checkmark_128.png" translatesAutoresizingMaskIntoConstraints="NO" id="Jfx-Jl-v1d">
+                                <rect key="frame" x="123" y="341" width="128" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="P5G-vD-l2J"/>
                     </view>
                     <connections>
                         <outlet property="previewImageArea" destination="T2I-PF-fsO" id="8jz-0d-PUe"/>
+                        <outlet property="saveConfirmation" destination="Jfx-Jl-v1d" id="jOb-1u-Amd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c6t-V0-WmG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -54,6 +67,7 @@
     </scenes>
     <resources>
         <image name="close.png" width="512" height="512"/>
+        <image name="green_checkmark_128.png" width="128" height="128"/>
         <image name="menu_64.png" width="64" height="64"/>
     </resources>
 </document>

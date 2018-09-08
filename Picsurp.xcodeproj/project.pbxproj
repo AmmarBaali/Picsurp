@@ -10,6 +10,7 @@
 		28546181E796460E450A8CE1 /* Pods_PicsurpTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9AD044F7FC3B64648FD38FF /* Pods_PicsurpTests.framework */; };
 		66FA62B539DE29DCBD461C16 /* Pods_Picsurp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89DD19D6ED63CD28834806C9 /* Pods_Picsurp.framework */; };
 		A02018DB2142280100BC521C /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = A02018DA214227FF00BC521C /* close.png */; };
+		A02018DD214353A900BC521C /* green_checkmark_128.png in Resources */ = {isa = PBXBuildFile; fileRef = A02018DC214353A900BC521C /* green_checkmark_128.png */; };
 		A0D6D90A211FE422008FBB91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D6D909211FE422008FBB91 /* AppDelegate.swift */; };
 		A0D6D90C211FE422008FBB91 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D6D90B211FE422008FBB91 /* CameraViewController.swift */; };
 		A0D6D90F211FE422008FBB91 /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0D6D90D211FE422008FBB91 /* Camera.storyboard */; };
@@ -70,6 +71,7 @@
 		20D3D44292F1F05357AF8E84 /* Pods-PicsurpUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PicsurpUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PicsurpUITests/Pods-PicsurpUITests.release.xcconfig"; sourceTree = "<group>"; };
 		89DD19D6ED63CD28834806C9 /* Pods_Picsurp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Picsurp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A02018DA214227FF00BC521C /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
+		A02018DC214353A900BC521C /* green_checkmark_128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green_checkmark_128.png; sourceTree = "<group>"; };
 		A0D6D906211FE422008FBB91 /* Picsurp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Picsurp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0D6D909211FE422008FBB91 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0D6D90B211FE422008FBB91 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 				A0D6D98D212D1B73008FBB91 /* shutter2_128.png */,
 				A0D6D98A212D1A2C008FBB91 /* menu_64.png */,
 				A0D6D984212D18F6008FBB91 /* settings_64.png */,
+				A02018DC214353A900BC521C /* green_checkmark_128.png */,
 				A02018DA214227FF00BC521C /* close.png */,
 				A0D6D975212BD2CC008FBB91 /* Picsurp_500.jpg */,
 			);
@@ -401,6 +404,7 @@
 				A0D6D987212D18FD008FBB91 /* settings_64.png in Resources */,
 				A0D6D98F212D1B74008FBB91 /* shutter2_128.png in Resources */,
 				A0D6D90F211FE422008FBB91 /* Camera.storyboard in Resources */,
+				A02018DD214353A900BC521C /* green_checkmark_128.png in Resources */,
 				A0D6D989212D18FD008FBB91 /* profile_64.png in Resources */,
 				A0D6D9642123B6DE008FBB91 /* GoogleService-Info.plist in Resources */,
 			);

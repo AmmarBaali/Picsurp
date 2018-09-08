@@ -11,6 +11,29 @@ import Foundation
 class Helper: UIViewController{
 
     
+                /* FUNCTIONS RELATED TO ANIMATIONS & DISPLAY*/
+    /* --------------------------------------------------------- */
+    /* --------------------------------------------------------- */
+    
+    func fadeIn(image: UIImageView){
+        UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseIn, animations: {
+            image.alpha = 0.5
+        }, completion: nil)
+    }
+    
+    func fadeOut(image: UIImageView){
+        UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseOut, animations: {
+            image.alpha = 0.0
+        }, completion: nil)
+    }
+    
+
+    
+    
+    
+    
+    
+    
     
                 /* FUNCTIONS RELATED TO FILES */
     /* --------------------------------------------------------- */
