@@ -169,6 +169,7 @@
 		A02018E62144E2A400BC521C /* camera */ = {
 			isa = PBXGroup;
 			children = (
+				A0D6D9A5213231E2008FBB91 /* source */,
 				A0D6D9B021323313008FBB91 /* SwiftyRecordButton.swift */,
 				A0D6D9B321323449008FBB91 /* PhotoViewController.swift */,
 				A0D6D9B221323447008FBB91 /* VideoViewController.swift */,
@@ -203,7 +204,6 @@
 			isa = PBXGroup;
 			children = (
 				A02018E62144E2A400BC521C /* camera */,
-				A0D6D9A5213231E2008FBB91 /* source */,
 				A0D6D979212D0F1F008FBB91 /* images */,
 				A0D6D90D211FE422008FBB91 /* Camera.storyboard */,
 				A0D6D90B211FE422008FBB91 /* CameraViewController.swift */,
@@ -211,13 +211,13 @@
 				A0D6D95F212293A0008FBB91 /* LoginViewController.swift */,
 				A0D6D95B21228EDA008FBB91 /* Profile.storyboard */,
 				A0D6D9612122954C008FBB91 /* ProfileViewController.swift */,
+				A02018DE2144CD8E00BC521C /* SideMenuTableViewController.swift */,
 				A0D6D909211FE422008FBB91 /* AppDelegate.swift */,
 				A0D6D912211FE424008FBB91 /* LaunchScreen.storyboard */,
 				A0D6D915211FE424008FBB91 /* Info.plist */,
 				A0D6D9632123B6DD008FBB91 /* GoogleService-Info.plist */,
 				A0D6D939211FEAA0008FBB91 /* AppDelegate.m */,
 				A0D6D938211FEAA0008FBB91 /* Picsurp-Bridging-Header.h */,
-				A02018DE2144CD8E00BC521C /* SideMenuTableViewController.swift */,
 				A0D6D973212BC5ED008FBB91 /* Helper.swift */,
 			);
 			path = Picsurp;

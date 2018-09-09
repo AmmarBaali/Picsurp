@@ -67,6 +67,14 @@
                                     <action selector="saveToCameraRollButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="y76-EX-tmo"/>
                                 </connections>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5u2-Fw-zGV">
+                                <rect key="frame" x="250" y="710" width="109" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Save to Storage"/>
+                                <connections>
+                                    <action selector="saveToStorage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BvX-NQ-u65"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -79,6 +87,7 @@
                         <outlet property="profileButton" destination="FGg-vE-K8T" id="RQa-iX-mXW"/>
                         <outlet property="saveConfirmation" destination="hd2-np-lDF" id="Wnt-g8-CEz"/>
                         <outlet property="saveToCameraRollButton" destination="YWN-LJ-hIm" id="I6A-eg-61e"/>
+                        <outlet property="saveToStorage" destination="5u2-Fw-zGV" id="xdy-hd-0oO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

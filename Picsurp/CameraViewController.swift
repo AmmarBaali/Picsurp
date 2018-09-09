@@ -8,23 +8,47 @@
 
 import UIKit
 import SwiftyCam
+import FirebaseStorage
 
 class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDelegate{
   
     @IBOutlet weak var captureButton: SwiftyRecordButton!
-
     @IBOutlet weak var profileButton: UIButton!
     @IBOutlet weak var previewImage: UIImageView!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var goToLoginButton: UIButton!
     @IBOutlet weak var saveToCameraRollButton: UIButton!
     @IBOutlet weak var saveConfirmation: UIImageView!
+    @IBOutlet weak var saveToStorage: UIButton!
     
-
+    var fbID = ""
+    var lastName = ""
+    
+    @IBAction func saveToStorage(_ sender: Any) {
+        let timeInterval = NSDate().timeIntervalSince1970
+        
+        let storage = Storage.storage()
+        let storageRef = storage.reference()
+        let photoRef = storageRef.child("images/\(self.lastName)-\(self.fbID)-\(timeInterval).jpg")
+        let uploadData = UIImagePNGRepresentation(self.previewImage.image!)
+        photoRef.putData(uploadData!, metadata: nil) { (metadata, error) in
+            guard let metadata = metadata else {
+                // Uh-oh, an error occurred!
+                return
+            }
+            // You can also access to download URL after upload.
+            photoRef.downloadURL { (url, error) in
+                guard let downloadURL = url else {
+                    // Uh-oh, an error occurred!
+                    return
+                }
+            }
+        }
+    }
+    
     @IBAction func saveToCameraRollButton(_ sender: Any) {
         UIImageWriteToSavedPhotosAlbum(previewImage.image!, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
     }
-    
     @IBAction func captureButton(_ sender: Any) {
         takePhoto()
     }
@@ -34,8 +58,6 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
     @IBAction func loginButton(_ sender: Any) {
         self.goToLogin()
     }
-    
-
     @IBAction func cancelButton(_ sender: Any) {
         self.goToCamera()
     }
@@ -44,14 +66,23 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
         super.viewDidLoad()
         cameraDelegate = self
         view.bringSubview(toFront: profileButton)
+        
+        let userData =  Helper().readFileinDocumentDirectory(filename: "UserData")
+        var userDataArray: [String] = []
+        userData.enumerateLines { line, _ in
+            userDataArray.append(line)
+        }
+        
+        self.lastName    = userDataArray[1]
+        self.fbID        = userDataArray[3]
     }
     
-    
-
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         //captureButton.isEnabled = true
     }
+    
+
     
     @objc func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {
         if let error = error {
@@ -77,6 +108,7 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
         goToLoginButton.isHidden = true
         cancelButton.isHidden = false
         saveToCameraRollButton.isHidden = false
+        saveToStorage.isHidden = false
         
     }
     

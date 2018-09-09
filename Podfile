@@ -9,6 +9,7 @@ target 'Picsurp' do
     pod 'Firebase/Core'
     pod 'Firebase/Auth'
     pod 'Firebase/Firestore'
+    pod 'Firebase/Storage'
     pod 'SwiftyCam', :git => 'https://github.com/Awalz/SwiftyCam.git', :branch => 'Swift4'
     pod 'SideMenu'
 

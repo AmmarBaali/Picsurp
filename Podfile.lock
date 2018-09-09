@@ -16,6 +16,9 @@ PODS:
   - Firebase/Firestore (5.5.0):
     - Firebase/CoreOnly
     - FirebaseFirestore (= 0.13.0)
+  - Firebase/Storage (5.5.0):
+    - Firebase/CoreOnly
+    - FirebaseStorage (= 3.0.0)
   - FirebaseAnalytics (5.1.0):
     - FirebaseCore (~> 5.1)
     - FirebaseInstanceID (~> 3.2)
@@ -51,6 +54,9 @@ PODS:
   - FirebaseInstanceID (3.2.0):
     - FirebaseCore (~> 5.1)
     - GoogleUtilities/Environment (~> 5.2)
+  - FirebaseStorage (3.0.0):
+    - FirebaseCore (~> 5.0)
+    - GTMSessionFetcher/Core (~> 1.1)
   - GoogleAppMeasurement (5.1.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2.0)
     - GoogleUtilities/MethodSwizzler (~> 5.2.0)
@@ -109,6 +115,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Firestore
+  - Firebase/Storage
   - SideMenu
   - SwiftyCam (from `https://github.com/Awalz/SwiftyCam.git`, branch `Swift4`)
 
@@ -122,6 +129,7 @@ SPEC REPOS:
     - FirebaseCore
     - FirebaseFirestore
     - FirebaseInstanceID
+    - FirebaseStorage
     - GoogleAppMeasurement
     - GoogleUtilities
     - gRPC
@@ -153,6 +161,7 @@ SPEC CHECKSUMS:
   FirebaseCore: ee4b35cf8c8e781da296cc7c15125e4608bb954d
   FirebaseFirestore: 0a6e4b9256ae39ed41258aa46213975c93908a74
   FirebaseInstanceID: 8cd2c6cfe7b9ab65ce7e248f6da7f26f6775b9be
+  FirebaseStorage: 7ca4bb7b58a25fa647b04f524033fc7cb7eb272b
   GoogleAppMeasurement: e785bdb86d3d280abc778156cec323a975f11d1d
   GoogleUtilities: 06b66f9567769a7958db20a92f0128b2843e49d5
   gRPC: 65fa2a50c4fd61940b76f4962d75c239c92c6a8d
@@ -166,6 +175,6 @@ SPEC CHECKSUMS:
   SideMenu: 70ee5657df63ec3382660ec4ef470bf1cf5db07d
   SwiftyCam: 7c826b73a5b208677aee29390582c771bf748661
 
-PODFILE CHECKSUM: 058fb9198e76adb66494e37d70cc290ce53c43a2
+PODFILE CHECKSUM: d4be971e8855f2a29dc01760c198c186d7fb36dd
 
 COCOAPODS: 1.5.3
