@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BTX-HB-d4x">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -9,9 +13,10 @@
         <!--Profile View Controller-->
         <scene sceneID="P7i-lW-NGS">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Og8-8d-A1X" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="ProfileStoryboardID" id="BTX-HB-d4x" customClass="ProfileViewController" customModule="Picsurp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="87v-v5-IRn">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mWa-c2-eov">
@@ -41,35 +46,83 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Idg-9u-n9I">
-                                <rect key="frame" x="27" y="695" width="51" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="LogOut"/>
-                                <connections>
-                                    <action selector="LogOutButton:" destination="BTX-HB-d4x" eventType="touchUpInside" id="apq-GY-5g2"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="54b-Vu-87z">
-                                <rect key="frame" x="295" y="53" width="118" height="64"/>
+                                <rect key="frame" x="327" y="66" width="48" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="menu_64.png"/>
+                                <state key="normal" image="settings_48.png"/>
+                                <connections>
+                                    <action selector="showSettingsButton:" destination="BTX-HB-d4x" eventType="touchUpInside" id="aWK-18-LXh"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="bIv-zN-581"/>
                     </view>
                     <connections>
-                        <outlet property="profileGreetingsLabel" destination="uDK-J2-hPe" id="aQZ-e7-jDI"/>
                         <outlet property="profileImage" destination="uFX-em-mhn" id="nlR-5G-GM1"/>
+                        <outlet property="profileNameLabel" destination="uDK-J2-hPe" id="aQZ-e7-jDI"/>
+                        <segue destination="rtz-vS-QVl" kind="presentation" id="56x-rB-NW4"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Og8-8d-A1X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-389.60000000000002" y="-77.811094452773617"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="I1q-Qt-CAl">
+            <objects>
+                <tableViewController storyboardIdentifier="Settings" id="flE-hh-g8T" customClass="SideMenuTableViewController" customModule="Picsurp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="j3X-vQ-Bwk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="r9n-0e-XVm">
+                            <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Log Out"/>
+                            <connections>
+                                <action selector="logOut:" destination="flE-hh-g8T" eventType="touchUpInside" id="NLv-gc-YH6"/>
+                            </connections>
+                        </button>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="iBc-k0-yU3">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iBc-k0-yU3" id="a8b-RP-zSz">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="flE-hh-g8T" id="oi5-u0-MTI"/>
+                            <outlet property="delegate" destination="flE-hh-g8T" id="nED-FI-sDC"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Settings" id="o5T-lj-onr"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jQ8-21-1LW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1596" y="-106"/>
+        </scene>
+        <!--Side Menu Navigation Controller-->
+        <scene sceneID="lGB-GB-uEk">
+            <objects>
+                <navigationController storyboardIdentifier="RightMenuNavigationController" id="rtz-vS-QVl" customClass="UISideMenuNavigationController" customModule="SideMenu" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KhR-4j-KGp">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="flE-hh-g8T" kind="relationship" relationship="rootViewController" id="U8i-Ue-7It"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UYV-0T-IcG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="640" y="-106"/>
         </scene>
     </scenes>
     <resources>
         <image name="camera_64.png" width="64" height="64"/>
-        <image name="menu_64.png" width="64" height="64"/>
+        <image name="settings_48.png" width="48" height="48"/>
     </resources>
 </document>

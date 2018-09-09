@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "60432C9DF390F8337184A0DAB3FBCCFD"
-               BlueprintName = "SwiftyCam"
+               BlueprintIdentifier = "6357307028506D0AB406138E5DFDBACA"
+               BlueprintName = "SideMenu"
                ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "SwiftyCam.framework">
+               BuildableName = "SideMenu.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

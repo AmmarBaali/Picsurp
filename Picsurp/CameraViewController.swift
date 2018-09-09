@@ -15,6 +15,15 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
 
     @IBOutlet weak var profileButton: UIButton!
     @IBOutlet weak var previewImage: UIImageView!
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var goToLoginButton: UIButton!
+    @IBOutlet weak var saveToCameraRollButton: UIButton!
+    @IBOutlet weak var saveConfirmation: UIImageView!
+    
+
+    @IBAction func saveToCameraRollButton(_ sender: Any) {
+        UIImageWriteToSavedPhotosAlbum(previewImage.image!, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+    }
     
     @IBAction func captureButton(_ sender: Any) {
         takePhoto()
@@ -25,23 +34,50 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
     @IBAction func loginButton(_ sender: Any) {
         self.goToLogin()
     }
-        
+    
+
+    @IBAction func cancelButton(_ sender: Any) {
+        self.goToCamera()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         cameraDelegate = self
         view.bringSubview(toFront: profileButton)
     }
     
+    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         //captureButton.isEnabled = true
+    }
+    
+    @objc func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {
+        if let error = error {
+            messagePopup(titleDisplayed: "Save Error", messageDisplayed: error.localizedDescription)
+        } else {
+            Helper().fadeIn(image: self.saveConfirmation)
+            Helper().fadeOut(image: self.saveConfirmation)
+        }
+    }
+    
+    func messagePopup(titleDisplayed: String, messageDisplayed: String){
+        let ac = UIAlertController(title: titleDisplayed, message: messageDisplayed, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        present(ac, animated: true)
     }
     
     func swiftyCam(_ swiftyCam: SwiftyCamViewController, didTake photo: UIImage) {
         // Called when takePhoto() is called or if a SwiftyCamButton initiates a tap gesture
         // Returns a UIImage captured from the current session
         previewImage.image = photo
-        performSegue(withIdentifier: "toPreviewSegue", sender: self)
+        
+        profileButton.isHidden = true
+        goToLoginButton.isHidden = true
+        cancelButton.isHidden = false
+        saveToCameraRollButton.isHidden = false
+        
     }
     
     func swiftyCam(_ swiftyCam: SwiftyCamViewController, didBeginRecordingVideo camera: SwiftyCamViewController.CameraSelection) {
@@ -90,7 +126,12 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
     
     
     
-    
+    func goToCamera(){
+        let storyboard = UIStoryboard(name: "Camera", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "CameraStoryboardID") as! CameraViewController
+        vc.modalTransitionStyle = .crossDissolve
+        present(vc, animated: true, completion: nil)
+    }
     func goToProfile(){
         let storyboard = UIStoryboard(name: "Profile", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "ProfileStoryboardID") as! ProfileViewController
@@ -102,20 +143,10 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
         let vc = storyboard.instantiateViewController(withIdentifier: "LoginStoryboardID") as! LoginViewController
         present(vc, animated: true, completion: nil)
     }
-    func goToPreview(){
-        let storyboard = UIStoryboard(name: "Preview", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "PreviewStoryboardID") as! PreviewViewController
-        present(vc, animated: false, completion: nil)
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let dvc : PreviewViewController = segue.destination as! PreviewViewController
-        dvc.imageInPreview = previewImage.image
     }
 
 }

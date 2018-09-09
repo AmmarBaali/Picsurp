@@ -7,18 +7,12 @@
 //
 
 import Foundation
+import SideMenu
 
 class ProfileViewController: UIViewController{
     
     @IBOutlet weak var profileImage: UIImageView!
-    @IBOutlet weak var profileGreetingsLabel: UILabel!
-    
-    //Logout and go to login page
-    @IBAction func LogOutButton(_ sender: Any) {
-        let loginManager = FBSDKLoginManager()
-        loginManager.logOut()
-        self.goToLogin()
-    }
+    @IBOutlet weak var profileNameLabel: UILabel!
     
     @IBAction func loginButton(_ sender: Any) {
         self.goToLogin()
@@ -26,33 +20,43 @@ class ProfileViewController: UIViewController{
     @IBAction func cameraButton(_ sender: Any) {
         self.goToCamera()
     }
-    
+    @IBAction func showSettingsButton(_ sender: Any) {
+        print("Show Setting Clicked ------------")
+       
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "RightMenuNavigationController")
+        present(vc!, animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("Profile View Controller - viewDidLoad")
+        let userData =  Helper().readFileinDocumentDirectory(filename: "UserData")
+        var userDataArray: [String] = []
+        userData.enumerateLines { line, _ in
+            userDataArray.append(line)
+        }
+        
+        let firstName   = userDataArray[0]
+        let lastName    = userDataArray[1]
+        //let email       = userDataArray[2]
+        let fbID        = userDataArray[3]
+        
+        DispatchQueue.main.async {
+            self.profileNameLabel.text = "\(firstName) \(lastName)"
+        }
+        
+        let url = URL(string: "https://graph.facebook.com/\(fbID)/picture?type=large&return_ssl_resources=1")
+        let urlStr = url?.absoluteString
+        self.profileImage.imageFromServerURL(urlString: urlStr!)
     }
-
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-            let userData =  Helper().readFileinDocumentDirectory(filename: "UserData")
-            var userDataArray: [String] = []
-            userData.enumerateLines { line, _ in
-                userDataArray.append(line)
-            }
-            
-            let firstName   = userDataArray[0]
-            let lastName    = userDataArray[1]
-            let email       = userDataArray[2]
-            let fbID        = userDataArray[3]
-            
-            DispatchQueue.main.async {
-                self.profileGreetingsLabel.text = "\(firstName) \(lastName)"
-            }
-            
-            let url = URL(string: "https://graph.facebook.com/\(fbID)/picture?type=large&return_ssl_resources=1")
-            let urlStr = url?.absoluteString
-            self.profileImage.imageFromServerURL(urlString: urlStr!)
+        print("Profile View Controller - viewWillAppear")
+        // Define the menus
+        SideMenuManager.default.menuRightNavigationController = storyboard!.instantiateViewController(withIdentifier: "RightMenuNavigationController") as? UISideMenuNavigationController
+        SideMenuManager.default.menuPresentMode = .menuSlideIn
+        
     }
     
     func goToLogin(){
@@ -79,7 +83,7 @@ extension UIImageView {
         self.image = nil
         URLSession.shared.dataTask(with: NSURL(string: urlString)! as URL, completionHandler: { (data, response, error) -> Void in
             if error != nil {
-                print(error)
+                print(error!)
                 return
             }
             DispatchQueue.main.async(execute: { () -> Void in
@@ -87,4 +91,5 @@ extension UIImageView {
                 self.image = image
             })
         }).resume()
-    }}
+    }
+}

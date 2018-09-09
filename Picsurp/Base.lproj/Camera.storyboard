@@ -33,7 +33,6 @@
                                 <state key="normal" title="Button" image="shutter_64.png"/>
                                 <connections>
                                     <action selector="captureButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vAu-qq-Gvk"/>
-                                    <segue destination="MWw-br-OP7" kind="show" identifier="toPreviewSegue" id="l0F-W4-Fft"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FGg-vE-K8T">
@@ -48,14 +47,38 @@
                                 <rect key="frame" x="0.0" y="71" width="375" height="669"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m04-JT-5La">
+                                <rect key="frame" x="24" y="81" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="cancel"/>
+                                <connections>
+                                    <action selector="cancelButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wDd-OF-aTp"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="green_checkmark_128.png" translatesAutoresizingMaskIntoConstraints="NO" id="hd2-np-lDF">
+                                <rect key="frame" x="123" y="342" width="128" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YWN-LJ-hIm">
+                                <rect key="frame" x="244" y="748" width="131" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Save to camera roll"/>
+                                <connections>
+                                    <action selector="saveToCameraRollButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="y76-EX-tmo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="cancelButton" destination="m04-JT-5La" id="vtf-Es-sjM"/>
                         <outlet property="captureButton" destination="kxb-zh-rfc" id="SF9-Ua-7Ki"/>
+                        <outlet property="goToLoginButton" destination="KV5-WM-8fW" id="p30-k1-oUV"/>
                         <outlet property="previewImage" destination="Z2O-dz-PcD" id="2Qm-fA-oE4"/>
                         <outlet property="profileButton" destination="FGg-vE-K8T" id="RQa-iX-mXW"/>
+                        <outlet property="saveConfirmation" destination="hd2-np-lDF" id="Wnt-g8-CEz"/>
+                        <outlet property="saveToCameraRollButton" destination="YWN-LJ-hIm" id="I6A-eg-61e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -63,16 +86,10 @@
             </objects>
             <point key="canvasLocation" x="32.799999999999997" y="363.54679802955667"/>
         </scene>
-        <!--Preview-->
-        <scene sceneID="nHM-np-aiH">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Preview" id="MWw-br-OP7" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="E55-xx-f41" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="525" y="549"/>
-        </scene>
     </scenes>
     <resources>
+        <image name="cancel" width="30" height="30"/>
+        <image name="green_checkmark_128.png" width="128" height="128"/>
         <image name="profile_64.png" width="64" height="64"/>
         <image name="shutter_64.png" width="64" height="64"/>
     </resources>

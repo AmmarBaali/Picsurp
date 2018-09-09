@@ -10,6 +10,7 @@ target 'Picsurp' do
     pod 'Firebase/Auth'
     pod 'Firebase/Firestore'
     pod 'SwiftyCam', :git => 'https://github.com/Awalz/SwiftyCam.git', :branch => 'Swift4'
+    pod 'SideMenu'
 
   target 'PicsurpTests' do
     inherit! :search_paths
