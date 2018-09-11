@@ -18,6 +18,12 @@ class SideMenuTableViewController: UITableViewController {
         self.view.window!.rootViewController?.dismiss(animated: true, completion: nil)
         self.goToLogin()
     }
+    @IBAction func openPrivacyPolicyURL(_ sender: Any) {
+        if let url = URL(string: "https://termsfeed.com/privacy-policy/07464347a81d615f6a2008aebd0be985") {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
+    
 
     
     override func viewDidLoad() {
@@ -26,7 +32,7 @@ class SideMenuTableViewController: UITableViewController {
         // Set up settings pane backgroung image
         let imageView = UIImageView(image: UIImage(named: "settings_background"))
         imageView.contentMode = .scaleToFill
-        imageView.alpha = 0.25
+        imageView.alpha = 0.90
         imageView.backgroundColor = UIColor.black.withAlphaComponent(0.2)
         tableView.backgroundView = imageView
         

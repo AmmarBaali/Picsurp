@@ -11,9 +11,9 @@ import SideMenu
 
 class ProfileViewController: UIViewController{
     
+
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var profileNameLabel: UILabel!
-    
     @IBAction func loginButton(_ sender: Any) {
         self.goToLogin()
     }
@@ -26,6 +26,7 @@ class ProfileViewController: UIViewController{
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "RightMenuNavigationController")
         present(vc!, animated: true, completion: nil)
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,5 +92,16 @@ extension UIImageView {
                 self.image = image
             })
         }).resume()
+    }
+}
+
+extension String {
+    func htmlAttributedString() -> NSAttributedString? {
+        guard let data = self.data(using: String.Encoding.utf16, allowLossyConversion: false) else { return nil }
+        guard let html = try? NSMutableAttributedString(
+            data: data,
+            options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html],
+            documentAttributes: nil) else { return nil }
+        return html
     }
 }

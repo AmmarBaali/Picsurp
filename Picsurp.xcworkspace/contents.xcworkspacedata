@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:SettingsTableViewCell.swift">
+   </FileRef>
+   <FileRef
       location = "group:Picsurp.xcodeproj">
    </FileRef>
    <FileRef

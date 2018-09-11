@@ -54,6 +54,13 @@
                                     <action selector="showSettingsButton:" destination="BTX-HB-d4x" eventType="touchUpInside" id="aWK-18-LXh"/>
                                 </connections>
                             </button>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LAr-hs-SRE">
+                                <rect key="frame" x="0.0" y="204" width="375" height="268"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="tSa-as-R5i" kind="embed" id="Ues-L1-yUU"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="bIv-zN-581"/>
@@ -65,44 +72,82 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-389.60000000000002" y="-77.811094452773617"/>
+            <point key="canvasLocation" x="-442.39999999999998" y="-106.40394088669952"/>
         </scene>
         <!--Settings-->
         <scene sceneID="I1q-Qt-CAl">
             <objects>
                 <tableViewController storyboardIdentifier="Settings" id="flE-hh-g8T" customClass="SideMenuTableViewController" customModule="Picsurp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="j3X-vQ-Bwk">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="9Nd-QL-V6D">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="r9n-0e-XVm">
-                            <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="15" maxY="0.0"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="zBJ-he-vNa">
+                            <rect key="frame" x="0.0" y="88" width="375" height="0.0"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Log Out"/>
-                            <connections>
-                                <action selector="logOut:" destination="flE-hh-g8T" eventType="touchUpInside" id="NLv-gc-YH6"/>
-                            </connections>
-                        </button>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="iBc-k0-yU3">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iBc-k0-yU3" id="a8b-RP-zSz">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </view>
+                        <sections>
+                            <tableViewSection id="7cp-Pv-O82">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Ga2-Ss-7Rk" customClass="UITableViewVibrantCell" customModule="SideMenu">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ga2-Ss-7Rk" id="SEd-Bw-hDX">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xuz-bF-mCy">
+                                                    <rect key="frame" x="36.567656765676475" y="6" width="300.00000000000011" height="29.999999999999943"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Privacy Policy">
+                                                        <color key="titleColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="openPrivacyPolicyURL:" destination="mki-wj-s1L" eventType="touchUpInside" id="Fcs-pw-xca"/>
+                                                        <action selector="openPrivacyPolicyURL:" destination="flE-hh-g8T" eventType="touchUpInside" id="yKO-3D-x47"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="vdx-hY-Qkc" customClass="UITableViewVibrantCell" customModule="SideMenu">
+                                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vdx-hY-Qkc" id="1py-W5-ZPa">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0yJ-nq-qcP">
+                                                    <rect key="frame" x="36.567656765676475" y="6.0000000000002274" width="300.00000000000011" height="30.000000000000057"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Log Out">
+                                                        <color key="titleColor" red="0.57414853570000002" green="0.57416242360000003" blue="0.57415497299999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="logOut:" destination="flE-hh-g8T" eventType="touchUpInside" id="u8W-5B-zsV"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
                         <connections>
-                            <outlet property="dataSource" destination="flE-hh-g8T" id="oi5-u0-MTI"/>
-                            <outlet property="delegate" destination="flE-hh-g8T" id="nED-FI-sDC"/>
+                            <outlet property="dataSource" destination="flE-hh-g8T" id="0oZ-6E-vr8"/>
+                            <outlet property="delegate" destination="flE-hh-g8T" id="zfq-4i-2D4"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Settings" id="o5T-lj-onr"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jQ8-21-1LW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="mki-wj-s1L" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1596" y="-106"/>
+            <point key="canvasLocation" x="1596" y="-106.40394088669952"/>
         </scene>
         <!--Side Menu Navigation Controller-->
         <scene sceneID="lGB-GB-uEk">
@@ -119,6 +164,40 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UYV-0T-IcG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="640" y="-106"/>
+        </scene>
+        <!--Photo Collection View Controller-->
+        <scene sceneID="Vkm-OW-XKQ">
+            <objects>
+                <collectionViewController id="tSa-as-R5i" customClass="PhotoCollectionViewController" customModule="Picsurp" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="IuF-il-wMU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="268"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="GYE-e9-xeW">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="lm9-pI-qFX">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="tSa-as-R5i" id="iT8-kS-rfv"/>
+                            <outlet property="delegate" destination="tSa-as-R5i" id="mVv-cg-c8w"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LkQ-9q-aOD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-443" y="473"/>
         </scene>
     </scenes>
     <resources>
