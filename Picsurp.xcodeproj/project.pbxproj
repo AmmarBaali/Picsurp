@@ -14,8 +14,7 @@
 		A02018DF2144CD8E00BC521C /* SideMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02018DE2144CD8E00BC521C /* SideMenuTableViewController.swift */; };
 		A02018E12144D40F00BC521C /* settings_48.png in Resources */ = {isa = PBXBuildFile; fileRef = A02018E02144D40E00BC521C /* settings_48.png */; };
 		A02018E52144D77600BC521C /* settings_background.png in Resources */ = {isa = PBXBuildFile; fileRef = A02018E42144D77500BC521C /* settings_background.png */; };
-		A02018EE2145FB0E00BC521C /* SettingsUITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02018ED2145FB0E00BC521C /* SettingsUITableView.swift */; };
-		A02018F22146141900BC521C /* PhotoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02018F12146141900BC521C /* PhotoCollectionViewController.swift */; };
+		A02018F42149F54600BC521C /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02018F32149F54600BC521C /* CollectionViewController.swift */; };
 		A0D6D90A211FE422008FBB91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D6D909211FE422008FBB91 /* AppDelegate.swift */; };
 		A0D6D90C211FE422008FBB91 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D6D90B211FE422008FBB91 /* CameraViewController.swift */; };
 		A0D6D90F211FE422008FBB91 /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0D6D90D211FE422008FBB91 /* Camera.storyboard */; };
@@ -78,8 +77,7 @@
 		A02018DE2144CD8E00BC521C /* SideMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewController.swift; sourceTree = "<group>"; };
 		A02018E02144D40E00BC521C /* settings_48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings_48.png; sourceTree = "<group>"; };
 		A02018E42144D77500BC521C /* settings_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings_background.png; sourceTree = "<group>"; };
-		A02018ED2145FB0E00BC521C /* SettingsUITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsUITableView.swift; sourceTree = "<group>"; };
-		A02018F12146141900BC521C /* PhotoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewController.swift; sourceTree = "<group>"; };
+		A02018F32149F54600BC521C /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		A0D6D906211FE422008FBB91 /* Picsurp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Picsurp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0D6D909211FE422008FBB91 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0D6D90B211FE422008FBB91 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
@@ -215,6 +213,7 @@
 				A0D6D95F212293A0008FBB91 /* LoginViewController.swift */,
 				A0D6D95B21228EDA008FBB91 /* Profile.storyboard */,
 				A0D6D9612122954C008FBB91 /* ProfileViewController.swift */,
+				A02018F32149F54600BC521C /* CollectionViewController.swift */,
 				A02018DE2144CD8E00BC521C /* SideMenuTableViewController.swift */,
 				A0D6D909211FE422008FBB91 /* AppDelegate.swift */,
 				A0D6D912211FE424008FBB91 /* LaunchScreen.storyboard */,
@@ -223,8 +222,6 @@
 				A0D6D939211FEAA0008FBB91 /* AppDelegate.m */,
 				A0D6D938211FEAA0008FBB91 /* Picsurp-Bridging-Header.h */,
 				A0D6D973212BC5ED008FBB91 /* Helper.swift */,
-				A02018ED2145FB0E00BC521C /* SettingsUITableView.swift */,
-				A02018F12146141900BC521C /* PhotoCollectionViewController.swift */,
 			);
 			path = Picsurp;
 			sourceTree = "<group>";
@@ -455,7 +452,6 @@
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/PinterestLayout/PinterestLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyCam/SwiftyCam.framework",
@@ -471,7 +467,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PinterestLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyCam.framework",
@@ -551,11 +546,10 @@
 				A0D6D960212293A0008FBB91 /* LoginViewController.swift in Sources */,
 				A0D6D9AC21323208008FBB91 /* SwiftyCamViewControllerDelegate.swift in Sources */,
 				A0D6D9AE21323208008FBB91 /* SwiftyCamViewController.swift in Sources */,
-				A02018F22146141900BC521C /* PhotoCollectionViewController.swift in Sources */,
 				A0D6D90C211FE422008FBB91 /* CameraViewController.swift in Sources */,
+				A02018F42149F54600BC521C /* CollectionViewController.swift in Sources */,
 				A0D6D9B121323314008FBB91 /* SwiftyRecordButton.swift in Sources */,
 				A0D6D9B421323449008FBB91 /* VideoViewController.swift in Sources */,
-				A02018EE2145FB0E00BC521C /* SettingsUITableView.swift in Sources */,
 				A0D6D9AB21323208008FBB91 /* PreviewView.swift in Sources */,
 				A02018DF2144CD8E00BC521C /* SideMenuTableViewController.swift in Sources */,
 				A0D6D974212BC5ED008FBB91 /* Helper.swift in Sources */,

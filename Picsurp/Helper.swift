@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FirebaseStorage
 
 class Helper: UIViewController{
 
@@ -30,9 +31,17 @@ class Helper: UIViewController{
 
     
     
+                /* FUNCTIONS RELATED TO STORAGE*/
+    /* --------------------------------------------------------- */
+    /* --------------------------------------------------------- */
     
-    
-    
+    func uploadImageToStorage(photo: UIImage, name: String){
+        let storage = Storage.storage()
+        let storageRef = storage.reference()
+        let photoRef = storageRef.child("images/\(name).jpg")
+        let uploadData = UIImagePNGRepresentation(photo)
+        photoRef.putData(uploadData!, metadata: nil)
+    }
     
     
                 /* FUNCTIONS RELATED TO FILES */
@@ -123,6 +132,21 @@ class Helper: UIViewController{
         }
     }
     
+    func getImagesinDocumentDirectory() -> [String]{
+        let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        do {
+            let directoryContents = try FileManager.default.contentsOfDirectory(at: documentsUrl, includingPropertiesForKeys: nil, options: [])
+            
+            let imageAbsolutePath = directoryContents.filter{ $0.pathExtension == "png" }
+            let imageNames = imageAbsolutePath.map{ $0.lastPathComponent }
+            //print("Image list:", imageNames)
+            return imageNames
+        } catch {
+            print(error.localizedDescription)
+        }
+        return []
+    }
+    
     
     func checkIfExistinDocumentDirectory(filename: String) -> Bool{
         let dir: URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last! as URL
@@ -136,6 +160,29 @@ class Helper: UIViewController{
             print("File \(filename) not found")
             return false
         }
+    }
+    
+    func saveImage(image: UIImage, name: String) -> Bool {
+        guard let data = UIImageJPEGRepresentation(image, 1) ?? UIImagePNGRepresentation(image) else {
+            return false
+        }
+        guard let directory = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) as NSURL else {
+            return false
+        }
+        do {
+            try data.write(to: directory.appendingPathComponent(name)!)
+            return true
+        } catch {
+            print(error.localizedDescription)
+            return false
+        }
+    }
+    
+    func retrieveImage(name: String) -> UIImage? {
+        if let dir = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) {
+            return UIImage(contentsOfFile: URL(fileURLWithPath: dir.absoluteString).appendingPathComponent(name).path)
+        }
+        return nil
     }
     
     /* --------------------------------------------------------- */
@@ -159,29 +206,12 @@ class Helper: UIViewController{
     /* --------------------------------------------------------- */
     /* --------------------------------------------------------- */
     
-//    func saveImage(image: UIImage) -> Bool {
-//        guard let data = UIImageJPEGRepresentation(image, 1) ?? UIImagePNGRepresentation(image) else {
-//            return false
-//        }
-//        guard let directory = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) as NSURL else {
-//            return false
-//        }
-//        do {
-//            try data.write(to: directory.appendingPathComponent("fileName.png")!)
-//            return true
-//        } catch {
-//            print(error.localizedDescription)
-//            return false
-//        }
-//    }
-//
-//
-//    func getSavedImage(named: String) -> UIImage? {
-//        if let dir = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) {
-//            return UIImage(contentsOfFile: URL(fileURLWithPath: dir.absoluteString).appendingPathComponent(named).path)
-//        }
-//        return nil
-//    }
+    func assignProfilePicToImageView(fbID: String, imageview: UIImageView){
+        let url = URL(string: "https://graph.facebook.com/\(fbID)/picture?type=large&return_ssl_resources=1")
+        let urlStr = url?.absoluteString
+        imageview.imageFromServerURL(urlString: urlStr!)
+    }
     
+
     
 }

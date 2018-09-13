@@ -28,13 +28,12 @@ class SideMenuTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Side Menu Table View Controller - viewDidLoad")
         // Set up settings pane backgroung image
         let imageView = UIImageView(image: UIImage(named: "settings_background"))
         imageView.contentMode = .scaleToFill
         imageView.alpha = 0.90
-        imageView.backgroundColor = UIColor.black.withAlphaComponent(0.2)
         tableView.backgroundView = imageView
+        SideMenuManager.default.menuFadeStatusBar = false
         
         // refresh cell blur effect in case it changed
         tableView.reloadData()
@@ -49,7 +48,6 @@ class SideMenuTableViewController: UITableViewController {
         let cell = super.tableView(tableView, cellForRowAt: indexPath) as! UITableViewVibrantCell
         
         cell.blurEffectStyle = SideMenuManager.default.menuBlurEffectStyle
-        
         return cell
     }
     

@@ -35,14 +35,6 @@
                                     <action selector="captureButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vAu-qq-Gvk"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FGg-vE-K8T">
-                                <rect key="frame" x="295" y="714" width="64" height="64"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="profile_64.png"/>
-                                <connections>
-                                    <action selector="profileButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Emt-Ko-aPF"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z2O-dz-PcD">
                                 <rect key="frame" x="0.0" y="71" width="375" height="669"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -75,6 +67,18 @@
                                     <action selector="saveToStorage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BvX-NQ-u65"/>
                                 </connections>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IxS-JW-fpS">
+                                <rect key="frame" x="264" y="672" width="81" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Save locally"/>
+                                <connections>
+                                    <action selector="saveLocally:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bEM-N3-7rQ"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z8z-QZ-lwZ">
+                                <rect key="frame" x="281" y="714" width="64" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -84,8 +88,9 @@
                         <outlet property="captureButton" destination="kxb-zh-rfc" id="SF9-Ua-7Ki"/>
                         <outlet property="goToLoginButton" destination="KV5-WM-8fW" id="p30-k1-oUV"/>
                         <outlet property="previewImage" destination="Z2O-dz-PcD" id="2Qm-fA-oE4"/>
-                        <outlet property="profileButton" destination="FGg-vE-K8T" id="RQa-iX-mXW"/>
+                        <outlet property="profileIcon" destination="z8z-QZ-lwZ" id="1gq-ki-afs"/>
                         <outlet property="saveConfirmation" destination="hd2-np-lDF" id="Wnt-g8-CEz"/>
+                        <outlet property="saveLocally" destination="IxS-JW-fpS" id="bH0-M6-YeE"/>
                         <outlet property="saveToCameraRollButton" destination="YWN-LJ-hIm" id="I6A-eg-61e"/>
                         <outlet property="saveToStorage" destination="5u2-Fw-zGV" id="xdy-hd-0oO"/>
                     </connections>
@@ -99,7 +104,6 @@
     <resources>
         <image name="cancel" width="30" height="30"/>
         <image name="green_checkmark_128.png" width="128" height="128"/>
-        <image name="profile_64.png" width="64" height="64"/>
         <image name="shutter_64.png" width="64" height="64"/>
     </resources>
 </document>

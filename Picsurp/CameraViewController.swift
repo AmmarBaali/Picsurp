@@ -8,46 +8,34 @@
 
 import UIKit
 import SwiftyCam
-import FirebaseStorage
+
 
 class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDelegate{
   
+    @IBOutlet weak var profileIcon: UIImageView!
     @IBOutlet weak var captureButton: SwiftyRecordButton!
-    @IBOutlet weak var profileButton: UIButton!
     @IBOutlet weak var previewImage: UIImageView!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var goToLoginButton: UIButton!
     @IBOutlet weak var saveToCameraRollButton: UIButton!
     @IBOutlet weak var saveConfirmation: UIImageView!
     @IBOutlet weak var saveToStorage: UIButton!
-    
+    @IBOutlet weak var saveLocally: UIButton!
     var fbID = ""
     var lastName = ""
     
     @IBAction func saveToStorage(_ sender: Any) {
         let timeInterval = NSDate().timeIntervalSince1970
-        
-        let storage = Storage.storage()
-        let storageRef = storage.reference()
-        let photoRef = storageRef.child("images/\(self.lastName)-\(self.fbID)-\(timeInterval).jpg")
-        let uploadData = UIImagePNGRepresentation(self.previewImage.image!)
-        photoRef.putData(uploadData!, metadata: nil) { (metadata, error) in
-            guard let metadata = metadata else {
-                // Uh-oh, an error occurred!
-                return
-            }
-            // You can also access to download URL after upload.
-            photoRef.downloadURL { (url, error) in
-                guard let downloadURL = url else {
-                    // Uh-oh, an error occurred!
-                    return
-                }
-            }
-        }
+        Helper().uploadImageToStorage(photo: self.previewImage.image!, name: "\(self.lastName)-\(self.fbID)-\(timeInterval)")
     }
     
     @IBAction func saveToCameraRollButton(_ sender: Any) {
         UIImageWriteToSavedPhotosAlbum(previewImage.image!, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+    }
+    
+    @IBAction func saveLocally(_ sender: Any) {
+        let timeInterval = NSDate().timeIntervalSince1970
+        Helper().saveImage(image: self.previewImage.image!, name: "\(self.lastName)-\(self.fbID)-\(timeInterval).png")
     }
     @IBAction func captureButton(_ sender: Any) {
         takePhoto()
@@ -65,7 +53,8 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
     override func viewDidLoad() {
         super.viewDidLoad()
         cameraDelegate = self
-        view.bringSubview(toFront: profileButton)
+        view.bringSubview(toFront: profileIcon)
+        //shouldUseDeviceOrientation = true
         
         let userData =  Helper().readFileinDocumentDirectory(filename: "UserData")
         var userDataArray: [String] = []
@@ -75,13 +64,24 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
         
         self.lastName    = userDataArray[1]
         self.fbID        = userDataArray[3]
+        
+        
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        profileIcon.isUserInteractionEnabled = true
+        profileIcon.addGestureRecognizer(tapGestureRecognizer)
+        Helper().assignProfilePicToImageView(fbID: self.fbID, imageview: self.profileIcon)
+        self.profileIcon.layer.cornerRadius = self.profileIcon.frame.size.width / 2
+        self.profileIcon.clipsToBounds = true
+        self.profileIcon.layer.borderWidth = 1
+        self.profileIcon.layer.borderColor = UIColor.white.cgColor
+
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        //captureButton.isEnabled = true
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        self.goToProfile()
     }
-    
 
     
     @objc func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {
@@ -104,11 +104,12 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
         // Returns a UIImage captured from the current session
         previewImage.image = photo
         
-        profileButton.isHidden = true
+        profileIcon.isHidden = true
         goToLoginButton.isHidden = true
         cancelButton.isHidden = false
         saveToCameraRollButton.isHidden = false
         saveToStorage.isHidden = false
+        saveLocally.isHidden = false
         
     }
     
@@ -181,4 +182,18 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
         // Dispose of any resources that can be recreated.
     }
 
+}
+
+extension UIImageView {
+    func load(url: URL) {
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.image = image
+                    }
+                }
+            }
+        }
+    }
 }

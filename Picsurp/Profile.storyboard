@@ -20,9 +20,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mWa-c2-eov">
-                                <rect key="frame" x="295" y="714" width="64" height="64"/>
+                                <rect key="frame" x="281" y="714" width="64" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="camera_64.png"/>
+                                <state key="normal" image="shutter_64.png"/>
                                 <connections>
                                     <action selector="cameraButton:" destination="BTX-HB-d4x" eventType="touchUpInside" id="uXV-7y-1xP"/>
                                 </connections>
@@ -54,11 +54,11 @@
                                     <action selector="showSettingsButton:" destination="BTX-HB-d4x" eventType="touchUpInside" id="aWK-18-LXh"/>
                                 </connections>
                             </button>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LAr-hs-SRE">
-                                <rect key="frame" x="0.0" y="204" width="375" height="268"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="azH-Pe-XsH">
+                                <rect key="frame" x="0.0" y="191" width="375" height="515"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
-                                    <segue destination="tSa-as-R5i" kind="embed" id="Ues-L1-yUU"/>
+                                    <segue destination="HFL-9V-nQA" kind="embed" id="85z-xT-GqB"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -165,22 +165,22 @@
             </objects>
             <point key="canvasLocation" x="640" y="-106"/>
         </scene>
-        <!--Photo Collection View Controller-->
-        <scene sceneID="Vkm-OW-XKQ">
+        <!--Cell-->
+        <scene sceneID="5Ee-eL-a8f">
             <objects>
-                <collectionViewController id="tSa-as-R5i" customClass="PhotoCollectionViewController" customModule="Picsurp" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="IuF-il-wMU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="268"/>
+                <collectionViewController title="Cell" id="HFL-9V-nQA" customClass="CollectionViewController" customModule="Picsurp" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="f8C-BY-iHm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="515"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="GYE-e9-xeW">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="S54-hj-YWF">
                             <size key="itemSize" width="50" height="50"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="lm9-pI-qFX">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" id="Ted-Ot-Ome">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -190,18 +190,18 @@
                             </collectionViewCell>
                         </cells>
                         <connections>
-                            <outlet property="dataSource" destination="tSa-as-R5i" id="iT8-kS-rfv"/>
-                            <outlet property="delegate" destination="tSa-as-R5i" id="mVv-cg-c8w"/>
+                            <outlet property="dataSource" destination="HFL-9V-nQA" id="cLC-i0-3xg"/>
+                            <outlet property="delegate" destination="HFL-9V-nQA" id="8kM-dB-Uxy"/>
                         </connections>
                     </collectionView>
                 </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LkQ-9q-aOD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="avC-qy-Pp2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-443" y="473"/>
+            <point key="canvasLocation" x="-442" y="392"/>
         </scene>
     </scenes>
     <resources>
-        <image name="camera_64.png" width="64" height="64"/>
         <image name="settings_48.png" width="48" height="48"/>
+        <image name="shutter_64.png" width="64" height="64"/>
     </resources>
 </document>

@@ -40,7 +40,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate{
         let position = CGPoint(x: 185, y: 550)
         loginButton.center = position
         loginButton.delegate = self
-        Helper().deleteFileinDocumentDirectory(filename: "fileName.png")
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -21,7 +21,6 @@ class ProfileViewController: UIViewController{
         self.goToCamera()
     }
     @IBAction func showSettingsButton(_ sender: Any) {
-        print("Show Setting Clicked ------------")
        
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "RightMenuNavigationController")
         present(vc!, animated: true, completion: nil)
@@ -30,7 +29,6 @@ class ProfileViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Profile View Controller - viewDidLoad")
         let userData =  Helper().readFileinDocumentDirectory(filename: "UserData")
         var userDataArray: [String] = []
         userData.enumerateLines { line, _ in
@@ -49,12 +47,13 @@ class ProfileViewController: UIViewController{
         let url = URL(string: "https://graph.facebook.com/\(fbID)/picture?type=large&return_ssl_resources=1")
         let urlStr = url?.absoluteString
         self.profileImage.imageFromServerURL(urlString: urlStr!)
+        self.profileImage.backgroundColor = UIColor.white
+        self.profileImage.layer.cornerRadius = 8.0
+        self.profileImage.clipsToBounds = true
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("Profile View Controller - viewWillAppear")
-        // Define the menus
         SideMenuManager.default.menuRightNavigationController = storyboard!.instantiateViewController(withIdentifier: "RightMenuNavigationController") as? UISideMenuNavigationController
         SideMenuManager.default.menuPresentMode = .menuSlideIn
         
