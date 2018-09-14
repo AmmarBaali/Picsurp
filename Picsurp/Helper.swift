@@ -151,7 +151,8 @@ class Helper: UIViewController{
     func checkIfExistinDocumentDirectory(filename: String) -> Bool{
         let dir: URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last! as URL
         let url = dir.appendingPathComponent(filename)
-        
+        printDocumentDirectoryContent()
+
         let filePath = url.path
         if(FileManager.default.fileExists(atPath: filePath)){
             print("File \(filename) exists")

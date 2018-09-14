@@ -9,9 +9,15 @@
 import Foundation
 import SideMenu
 
-class ProfileViewController: UIViewController{
-    
 
+
+class ProfileViewController: UIViewController{
+
+    
+    @IBAction func showDOC(_ sender: Any) {
+        Helper().printDocumentDirectoryContent()
+    }
+    
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var profileNameLabel: UILabel!
     @IBAction func loginButton(_ sender: Any) {
@@ -26,11 +32,12 @@ class ProfileViewController: UIViewController{
         present(vc!, animated: true, completion: nil)
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         let userData =  Helper().readFileinDocumentDirectory(filename: "UserData")
         var userDataArray: [String] = []
+
+        
         userData.enumerateLines { line, _ in
             userDataArray.append(line)
         }

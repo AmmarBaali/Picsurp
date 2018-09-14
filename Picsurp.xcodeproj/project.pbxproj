@@ -15,6 +15,9 @@
 		A02018E12144D40F00BC521C /* settings_48.png in Resources */ = {isa = PBXBuildFile; fileRef = A02018E02144D40E00BC521C /* settings_48.png */; };
 		A02018E52144D77600BC521C /* settings_background.png in Resources */ = {isa = PBXBuildFile; fileRef = A02018E42144D77500BC521C /* settings_background.png */; };
 		A02018F42149F54600BC521C /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02018F32149F54600BC521C /* CollectionViewController.swift */; };
+		A02018F9214A2A1400BC521C /* star_48.png in Resources */ = {isa = PBXBuildFile; fileRef = A02018F7214A2A1200BC521C /* star_48.png */; };
+		A02018FA214A2A1400BC521C /* delete_48.png in Resources */ = {isa = PBXBuildFile; fileRef = A02018F8214A2A1400BC521C /* delete_48.png */; };
+		A02018FC214B477500BC521C /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02018FB214B477400BC521C /* MyCollectionViewCell.swift */; };
 		A0D6D90A211FE422008FBB91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D6D909211FE422008FBB91 /* AppDelegate.swift */; };
 		A0D6D90C211FE422008FBB91 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D6D90B211FE422008FBB91 /* CameraViewController.swift */; };
 		A0D6D90F211FE422008FBB91 /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0D6D90D211FE422008FBB91 /* Camera.storyboard */; };
@@ -78,6 +81,9 @@
 		A02018E02144D40E00BC521C /* settings_48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings_48.png; sourceTree = "<group>"; };
 		A02018E42144D77500BC521C /* settings_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings_background.png; sourceTree = "<group>"; };
 		A02018F32149F54600BC521C /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		A02018F7214A2A1200BC521C /* star_48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_48.png; sourceTree = "<group>"; };
+		A02018F8214A2A1400BC521C /* delete_48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete_48.png; sourceTree = "<group>"; };
+		A02018FB214B477400BC521C /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
 		A0D6D906211FE422008FBB91 /* Picsurp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Picsurp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0D6D909211FE422008FBB91 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0D6D90B211FE422008FBB91 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
@@ -222,6 +228,7 @@
 				A0D6D939211FEAA0008FBB91 /* AppDelegate.m */,
 				A0D6D938211FEAA0008FBB91 /* Picsurp-Bridging-Header.h */,
 				A0D6D973212BC5ED008FBB91 /* Helper.swift */,
+				A02018FB214B477400BC521C /* MyCollectionViewCell.swift */,
 			);
 			path = Picsurp;
 			sourceTree = "<group>";
@@ -261,6 +268,8 @@
 				A0D6D985212D18F9008FBB91 /* camera_64.png */,
 				A0D6D986212D18FD008FBB91 /* profile_64.png */,
 				A0D6D98C212D1B70008FBB91 /* shutter_64.png */,
+				A02018F8214A2A1400BC521C /* delete_48.png */,
+				A02018F7214A2A1200BC521C /* star_48.png */,
 				A0D6D98D212D1B73008FBB91 /* shutter2_128.png */,
 				A02018E02144D40E00BC521C /* settings_48.png */,
 				A0D6D98A212D1A2C008FBB91 /* menu_64.png */,
@@ -410,12 +419,14 @@
 				A0D6D914211FE424008FBB91 /* LaunchScreen.storyboard in Resources */,
 				A02018DB2142280100BC521C /* close.png in Resources */,
 				A0D6D988212D18FD008FBB91 /* camera_64.png in Resources */,
+				A02018F9214A2A1400BC521C /* star_48.png in Resources */,
 				A0D6D94E2120F551008FBB91 /* Login.storyboard in Resources */,
 				A02018E52144D77600BC521C /* settings_background.png in Resources */,
 				A0D6D95C21228EDA008FBB91 /* Profile.storyboard in Resources */,
 				A0D6D911211FE424008FBB91 /* Assets.xcassets in Resources */,
 				A0D6D98E212D1B74008FBB91 /* shutter_64.png in Resources */,
 				A0D6D987212D18FD008FBB91 /* settings_64.png in Resources */,
+				A02018FA214A2A1400BC521C /* delete_48.png in Resources */,
 				A0D6D98F212D1B74008FBB91 /* shutter2_128.png in Resources */,
 				A02018E12144D40F00BC521C /* settings_48.png in Resources */,
 				A0D6D90F211FE422008FBB91 /* Camera.storyboard in Resources */,
@@ -452,6 +463,7 @@
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/NewPopMenu/PopMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyCam/SwiftyCam.framework",
@@ -467,6 +479,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyCam.framework",
@@ -556,6 +569,7 @@
 				A0D6D9622122954C008FBB91 /* ProfileViewController.swift in Sources */,
 				A0D6D9AD21323208008FBB91 /* SwiftyCamButton.swift in Sources */,
 				A0D6D90A211FE422008FBB91 /* AppDelegate.swift in Sources */,
+				A02018FC214B477500BC521C /* MyCollectionViewCell.swift in Sources */,
 				A0D6D9B521323449008FBB91 /* PhotoViewController.swift in Sources */,
 				A0D6D9AF21323208008FBB91 /* Orientation.swift in Sources */,
 				A0D6D93A211FEAA0008FBB91 /* AppDelegate.m in Sources */,
