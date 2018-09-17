@@ -28,6 +28,26 @@ class Helper: UIViewController{
         }, completion: nil)
     }
     
+//    func retrieveImage(name: String) -> UIImage? {
+//        if let dir = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) {
+//            return UIImage(contentsOfFile: URL(fileURLWithPath: dir.absoluteString).appendingPathComponent(name).path)
+//        }
+//        return nil
+//    }
+
+    func retrieveImage(filename: String) -> UIImage? {
+        let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let fileURL = documentsUrl.appendingPathComponent(filename)
+        do {
+            let imageData = try Data(contentsOf: fileURL)
+            return UIImage(data: imageData)
+        } catch {
+            print("Error loading image : \(error)")
+            print("-----------------------")
+            printDocumentDirectoryContent()
+        }
+        return nil
+    }
 
     
     
@@ -65,6 +85,10 @@ class Helper: UIViewController{
             let fileURL = dir.appendingPathComponent(filename)
             do {
                 let content = try String(contentsOf: fileURL, encoding: .utf8)
+//                print("Content of \(filename)")
+//                print("Start--------------------")
+//                print(content)
+//                print("End----------------------")
                 return content
             }
             catch let error as NSError {
@@ -109,7 +133,7 @@ class Helper: UIViewController{
                 try fileManager.removeItem(atPath: filePath)
                 print("Deleted File: \(filename)")
             } else {
-                print("File does not exist")
+                print("File \(filename) does not exist")
             }
         }
         catch let error as NSError {
@@ -179,12 +203,7 @@ class Helper: UIViewController{
         }
     }
     
-    func retrieveImage(name: String) -> UIImage? {
-        if let dir = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) {
-            return UIImage(contentsOfFile: URL(fileURLWithPath: dir.absoluteString).appendingPathComponent(name).path)
-        }
-        return nil
-    }
+
     
     /* --------------------------------------------------------- */
     /* --------------------------------------------------------- */

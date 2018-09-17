@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import PopMenu
 
 private let reuseIdentifier = "Cell"
 
@@ -15,24 +14,20 @@ class CollectionViewController: UICollectionViewController {
 
     let localImages = Helper().getImagesinDocumentDirectory()
     let numberOfCellsPerRow: CGFloat = 3
-    let menuViewController = PopMenuViewController()
-    let manager = PopMenuManager.default
-    var imageSelected = ""
-
+    var count  = Helper().getImagesinDocumentDirectory().count
+    
     
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("ViewDidLoad -----------------")
-        if let flowLayout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
-            let horizontalSpacing = flowLayout.scrollDirection == .vertical ? flowLayout.minimumInteritemSpacing : flowLayout.minimumLineSpacing
-            let cellWidth = (view.frame.width - max(0, numberOfCellsPerRow - 1)*horizontalSpacing)/numberOfCellsPerRow
-            flowLayout.itemSize = CGSize(width: cellWidth, height: cellWidth)
-        }
-        
-        
-        setupPopupMenu()
+
+        //Setting up the layout of the Collection View
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 125, height: 125)
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+        collectionView?.collectionViewLayout = layout
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -41,24 +36,41 @@ class CollectionViewController: UICollectionViewController {
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
     
-        
-    func setupPopupMenu(){
-        let favoriteAction = PopMenuDefaultAction(title: "Favorite", image: UIImage(named: "star_48.png"), didSelect: { action in
-            print("\(String(describing: action.title)) is tapped")
-        })
-        
-        let deleteAction = PopMenuDefaultAction(title: "Delete", image: UIImage(named: "delete_48.png"), didSelect: { action in
-            print("\(String(describing: action.title)) is tapped")
-            Helper().printDocumentDirectoryContent()
-            print("Image to be deleted NOW: \(self.imageSelected)")
-            if (Helper().checkIfExistinDocumentDirectory(filename: self.imageSelected)){
-                self.deleteFileinDocumentDirectory(filename: self.imageSelected)
-            }
-        })
-        manager.addAction(favoriteAction)
-        manager.addAction(deleteAction)
-    }
 
+        
+//    func setupPopupMenu(indexPath: IndexPath){
+//        //print("PopupMenu started with:::::::::::: \(self.imageSelected)")
+//
+//        let favoriteAction = PopMenuDefaultAction(title: "Favorite", image: UIImage(named: "star_48.png"), didSelect: { action in
+//            print("\(String(describing: action.title)) is tapped")
+//        })
+//
+//        let deleteAction = PopMenuDefaultAction(title: "Delete", image: UIImage(named: "delete_48.png"), didSelect: { action in
+//            print("\(String(describing: action.title)) is tapped")
+//            self.deleteCell(indexPath: indexPath)
+//        })
+//
+//        manager.addAction(favoriteAction)
+//        manager.addAction(deleteAction)
+//
+//    }
+
+//    func deleteCell(indexPath: IndexPath){
+//        print("Section: \(indexPath.section)")
+//        print("Item: \(indexPath.item )")
+//        print("Image in delete func: \(self.imageSelected)")
+//
+//        self.collectionView?.performBatchUpdates({
+//            self.deleteFileinDocumentDirectory(filename: self.imageSelected)
+//            self.collectionView?.numberOfItems(inSection: 0)
+//            self.collectionView?.reloadData()
+//        })
+//    }
+    
+
+    
+
+    
 
     /*
     // MARK: - Navigation
@@ -83,25 +95,38 @@ class CollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("You selected cell #\(indexPath.item)! Image: \(localImages[indexPath.item])")
+        let selectedImageFile = "SelectedImage"
         print("didSelectItemAt: \(localImages[indexPath.item])")
-        self.imageSelected = localImages[indexPath.item]
+        Helper().createFileinDocumentDirectory(filename: selectedImageFile)
+        Helper().writeToFileInDocumentDirectory(filename: selectedImageFile, textToAdd: localImages[indexPath.item])
+        goToStudio()
     }
+    
+    func goToStudio(){
+        let storyboard = UIStoryboard(name: "Studio", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "StudioStoryboardID") as! StudioViewController
+        present(vc, animated: true, completion: nil)
+    }
+
+
+    
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
 
         //Setting the Image
-        let photoCell = UIImageView(frame: CGRect(x: 28, y: 0, width: 70, height: 116))
-        photoCell.image = retrieveImage(name: localImages[indexPath.item])
-        photoCell.contentMode = .scaleAspectFit
+        let photoCell = UIImageView(frame: CGRect(x: 0, y: 0, width: 125, height: 125))
+        
+        photoCell.image = cropToBounds(image: Helper().retrieveImage(filename: localImages[indexPath.item])!, width: 125, height: 125)
+        
+        //photoCell.contentMode = .scaleAspectFit
         //Setting the image frame
-        photoCell.backgroundColor = UIColor.gray
-        photoCell.layer.cornerRadius = 8.0
+        //photoCell.backgroundColor = UIColor.gray
+        //photoCell.layer.cornerRadius = 8.0
         photoCell.clipsToBounds = true
         photoCell.layer.borderWidth = 1
-        photoCell.layer.borderColor = UIColor.gray.cgColor
+        photoCell.layer.borderColor = UIColor.white.cgColor
         
         //Handling long press
         let holdGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(imageHeld(holdGestureRecognizer:)))
@@ -112,21 +137,97 @@ class CollectionViewController: UICollectionViewController {
         return cell
     }
     
+    func cropToBounds(image: UIImage, width: Double, height: Double) -> UIImage {
+        
+        let cgimage = image.cgImage!
+        let contextImage: UIImage = UIImage(cgImage: cgimage)
+        let contextSize: CGSize = contextImage.size
+        var posX: CGFloat = 0.0
+        var posY: CGFloat = 0.0
+        var cgwidth: CGFloat = CGFloat(width)
+        var cgheight: CGFloat = CGFloat(height)
+        
+        // See what size is longer and create the center off of that
+        if contextSize.width > contextSize.height {
+            posX = ((contextSize.width - contextSize.height) / 2)
+            posY = 0
+            cgwidth = contextSize.height
+            cgheight = contextSize.height
+        } else {
+            posX = 0
+            posY = ((contextSize.height - contextSize.width) / 2)
+            cgwidth = contextSize.width
+            cgheight = contextSize.width
+        }
+        
+        let rect: CGRect = CGRect(x: posX, y: posY, width: cgwidth, height: cgheight)
+        
+        // Create bitmap image from context using the rect
+        let imageRef: CGImage = cgimage.cropping(to: rect)!
+        
+        // Create a new image based on the imageRef and rotate back to the original orientation
+        let image: UIImage = UIImage(cgImage: imageRef, scale: image.scale, orientation: image.imageOrientation)
+        
+        return image
+    }
+    
     
     @objc func imageHeld(holdGestureRecognizer: UILongPressGestureRecognizer) {
         if holdGestureRecognizer.state == UIGestureRecognizerState.began {
-            let point = holdGestureRecognizer.location(in: self.collectionView)
-            let indexPath = self.collectionView?.indexPathForItem(at: point)
-            print("Long hold detected")
-            if let index = indexPath {
-                print("imageSelected Updated")
-                self.imageSelected = localImages[index.row]
-            } else {
-                print("Could not find index path")
-            }
-            manager.present()
+//            let point = holdGestureRecognizer.location(in: self.collectionView)
+//            let indexPath = self.collectionView?.indexPathForItem(at: point)
+//            print("Long hold detected at point: \(String(describing: indexPath))-------------------")
+//            print(count)
+//            if let index = indexPath {
+//                let manager = PopMenuManager.default
+//                let imageSelected = localImages[index.row]
+//                print("imageSelected Updated: \(localImages[index.row])")
+//                print("Section: \(String(describing: indexPath?.section))")
+//                print("Item: \(String(describing: indexPath?.item ))")
+//                //print("***Image Selected Value= \(self.imageSelected)***")
+//                //setupPopupMenu(indexPath: indexPath!)
+//
+//                let deleteAction = PopMenuDefaultAction(title: "Delete \(imageSelected.suffix(10))", image: UIImage(named: "delete_48.png"), didSelect: { action in
+//                    print("\(String(describing: action.title)) is tapped")
+//                    self.deleteFileinDocumentDirectory(filename: imageSelected)
+//                })
+//
+//                manager.addAction(deleteAction)
+//                manager.present()
+//            } else {
+//                print("Could not find index path")
+//            }
         }
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     func retrieveImage(name: String) -> UIImage? {
         if let dir = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) {
@@ -153,13 +254,14 @@ class CollectionViewController: UICollectionViewController {
                 try fileManager.removeItem(atPath: filePath)
                 print("Deleted File: \(filename)")
             } else {
-                print("File does not exist")
+                print("File \(filename) does not exist")
             }
         }
         catch let error as NSError {
             print("Ooooops! Something went wrong: \(error)")
         }
     }
+
 
     
 

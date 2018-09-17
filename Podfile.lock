@@ -107,7 +107,6 @@ PODS:
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
-  - NewPopMenu (1.1.2)
   - Protobuf (3.6.1)
   - SideMenu (4.0.0)
   - SwiftyCam (2.7.0)
@@ -117,7 +116,6 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Firestore
   - Firebase/Storage
-  - NewPopMenu (~> 1.1)
   - SideMenu
   - SwiftyCam (from `https://github.com/Awalz/SwiftyCam.git`, branch `Swift4`)
 
@@ -141,7 +139,6 @@ SPEC REPOS:
     - GTMSessionFetcher
     - leveldb-library
     - nanopb
-    - NewPopMenu
     - Protobuf
     - SideMenu
 
@@ -174,11 +171,10 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 0c4baf0a73acd0041bf9f71ea018deedab5ea84e
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
-  NewPopMenu: 42c2fbd46c7fcb7d7c1c3289c8675afd1877ffc8
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   SideMenu: 70ee5657df63ec3382660ec4ef470bf1cf5db07d
   SwiftyCam: 7c826b73a5b208677aee29390582c771bf748661
 
-PODFILE CHECKSUM: d778cb7b295dcb3342dd1be3aee20d900eb50090
+PODFILE CHECKSUM: d4be971e8855f2a29dc01760c198c186d7fb36dd
 
 COCOAPODS: 1.5.3

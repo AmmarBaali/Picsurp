@@ -54,21 +54,13 @@
                                     <action selector="showSettingsButton:" destination="BTX-HB-d4x" eventType="touchUpInside" id="aWK-18-LXh"/>
                                 </connections>
                             </button>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="azH-Pe-XsH">
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="azH-Pe-XsH">
                                 <rect key="frame" x="0.0" y="191" width="375" height="515"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="HFL-9V-nQA" kind="embed" id="85z-xT-GqB"/>
                                 </connections>
                             </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bBW-fN-igz">
-                                <rect key="frame" x="248" y="103" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="showDOC:" destination="BTX-HB-d4x" eventType="touchUpInside" id="tcs-eP-f6Y"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="bIv-zN-581"/>
@@ -81,6 +73,14 @@
                 </viewController>
             </objects>
             <point key="canvasLocation" x="-442.39999999999998" y="-106.40394088669952"/>
+        </scene>
+        <!--Storyboard Reference-->
+        <scene sceneID="Zky-Cs-DOv">
+            <objects>
+                <viewControllerPlaceholder id="Zhi-Km-7kP" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hGW-hs-08S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="54" y="-388"/>
         </scene>
         <!--Settings-->
         <scene sceneID="I1q-Qt-CAl">
@@ -206,6 +206,13 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="avC-qy-Pp2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-442" y="568"/>
+        </scene>
+        <!--Storyboard Reference-->
+        <scene sceneID="b8G-Da-59J">
+            <objects>
+                <viewControllerPlaceholder id="e1j-sj-bjV" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZoD-SJ-fRG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <resources>

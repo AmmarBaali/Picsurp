@@ -12,11 +12,6 @@ import SideMenu
 
 
 class ProfileViewController: UIViewController{
-
-    
-    @IBAction func showDOC(_ sender: Any) {
-        Helper().printDocumentDirectoryContent()
-    }
     
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var profileNameLabel: UILabel!

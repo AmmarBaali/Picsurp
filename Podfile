@@ -12,7 +12,6 @@ target 'Picsurp' do
     pod 'Firebase/Storage'
     pod 'SwiftyCam', :git => 'https://github.com/Awalz/SwiftyCam.git', :branch => 'Swift4'
     pod 'SideMenu'
-    pod 'NewPopMenu', '~> 1.1'
 
   target 'PicsurpTests' do
     inherit! :search_paths
