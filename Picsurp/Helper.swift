@@ -163,8 +163,9 @@ class Helper: UIViewController{
             
             let imageAbsolutePath = directoryContents.filter{ $0.pathExtension == "png" }
             let imageNames = imageAbsolutePath.map{ $0.lastPathComponent }
+            let sortedImageNames = imageNames.sorted { $1 < $0 }
             //print("Image list:", imageNames)
-            return imageNames
+            return sortedImageNames
         } catch {
             print(error.localizedDescription)
         }

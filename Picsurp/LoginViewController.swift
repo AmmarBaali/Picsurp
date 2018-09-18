@@ -23,9 +23,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate{
     @IBAction func profileButton(_ sender: Any) {
         self.goToProfile()
     }
-    @IBAction func cameraButton(_ sender: Any) {
-        self.goToCamera()
-    }
     
     let loginButton: FBSDKLoginButton = {
         let button = FBSDKLoginButton()
@@ -123,15 +120,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate{
             print("User not logged in")
         }
 
-    }
-    func goToCamera(){
-    if(FBSDKAccessToken.current() != nil){
-        let storyboard = UIStoryboard(name: "Camera", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "CameraStoryboardID") as! CameraViewController
-        present(vc, animated: true, completion: nil)
-    } else {
-        print("User not logged in")
-        }
     }
     
     override func didReceiveMemoryWarning() {

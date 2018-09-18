@@ -47,7 +47,6 @@ class StudioViewController: UIViewController {
     func goToProfile(){
         let storyboard = UIStoryboard(name: "Profile", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "ProfileStoryboardID") as! ProfileViewController
-        vc.modalTransitionStyle = .crossDissolve
         present(vc, animated: true, completion: nil)
     }
     

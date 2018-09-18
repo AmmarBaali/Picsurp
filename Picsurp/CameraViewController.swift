@@ -166,10 +166,13 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
         present(vc, animated: true, completion: nil)
     }
     func goToProfile(){
-        let storyboard = UIStoryboard(name: "Profile", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "ProfileStoryboardID") as! ProfileViewController
-        vc.modalTransitionStyle = .crossDissolve
-        present(vc, animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
+        
+//        let storyboard = UIStoryboard(name: "Profile", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "ProfileStoryboardID") as! ProfileViewController
+//        vc.modalTransitionStyle = .crossDissolve
+//        present(vc, animated: true, completion: nil)
     }
     func goToLogin(){
         let storyboard = UIStoryboard(name: "Login", bundle: nil)

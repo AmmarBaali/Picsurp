@@ -62,9 +62,8 @@ class ProfileViewController: UIViewController{
     }
     
     func goToLogin(){
-        let storyboard = UIStoryboard(name: "Login", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "LoginStoryboardID") as! LoginViewController
-        present(vc, animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
     func goToCamera(){
         let storyboard = UIStoryboard(name: "Camera", bundle: nil)
