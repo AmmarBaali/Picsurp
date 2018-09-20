@@ -40,14 +40,22 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
     @IBAction func captureButton(_ sender: Any) {
         takePhoto()
     }
-    @IBAction func profileButton(_ sender: Any) {
-        self.goToProfile()
-    }
+//    @IBAction func profileButton(_ sender: Any) {
+//        self.goToProfile()
+//    }
     @IBAction func loginButton(_ sender: Any) {
         self.goToLogin()
     }
     @IBAction func cancelButton(_ sender: Any) {
-        self.goToCamera()
+        
+        profileIcon.isHidden = false
+        goToLoginButton.isHidden = false
+        cancelButton.isHidden = true
+        saveToCameraRollButton.isHidden = true
+        saveToStorage.isHidden = true
+        saveLocally.isHidden = true
+        previewImage.image = nil
+
     }
     
     override func viewDidLoad() {
@@ -78,8 +86,7 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
 
     }
     
-    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
-    {
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer){
         self.goToProfile()
     }
 
@@ -166,8 +173,11 @@ class CameraViewController: SwiftyCamViewController, SwiftyCamViewControllerDele
         present(vc, animated: true, completion: nil)
     }
     func goToProfile(){
-        self.navigationController?.popViewController(animated: true)
-        self.dismiss(animated: true, completion: nil)
+//        self.navigationController?.popViewController(animated: true)
+//        self.dismiss(animated: true, completion: nil)
+        
+        let vc = self
+        vc.dismiss(animated: true, completion: nil)
         
 //        let storyboard = UIStoryboard(name: "Profile", bundle: nil)
 //        let vc = storyboard.instantiateViewController(withIdentifier: "ProfileStoryboardID") as! ProfileViewController

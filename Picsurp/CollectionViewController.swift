@@ -36,7 +36,8 @@ class CollectionViewController: UICollectionViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)        
+        super.viewWillAppear(animated)
+        //print("CollectionView - viewWillAppear")
     }
     
 
@@ -102,6 +103,7 @@ class CollectionViewController: UICollectionViewController {
         print("didSelectItemAt: \(localImages[indexPath.item])")
         Helper().createFileinDocumentDirectory(filename: selectedImageFile)
         Helper().writeToFileInDocumentDirectory(filename: selectedImageFile, textToAdd: localImages[indexPath.item])
+        print(indexPath)
         goToStudio()
     }
     
