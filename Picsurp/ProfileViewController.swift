@@ -22,9 +22,7 @@ class ProfileViewController: UIViewController{
         self.goToCamera()
     }
     @IBAction func showSettingsButton(_ sender: Any) {
-       
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "RightMenuNavigationController")
-        present(vc!, animated: true, completion: nil)
+       self.goToSettings()
     }
     
     override func viewDidLoad() {
@@ -58,12 +56,15 @@ class ProfileViewController: UIViewController{
         super.viewWillAppear(animated)
         SideMenuManager.default.menuRightNavigationController = storyboard!.instantiateViewController(withIdentifier: "RightMenuNavigationController") as? UISideMenuNavigationController
         SideMenuManager.default.menuPresentMode = .menuSlideIn
-        
     }
     
     func goToLogin(){
         self.navigationController?.popViewController(animated: true)
         self.dismiss(animated: true, completion: nil)
+    }
+    func goToSettings(){
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "RightMenuNavigationController")
+        present(vc!, animated: true, completion: nil)
     }
     func goToCamera(){
         let storyboard = UIStoryboard(name: "Camera", bundle: nil)

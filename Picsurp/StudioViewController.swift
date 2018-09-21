@@ -37,7 +37,6 @@ class StudioViewController: UIViewController {
     @IBAction func deleteImage(_ sender: Any) {
         let imageFilename = String(Helper().readFileinDocumentDirectory(filename: "SelectedImage").filter {!" \n\t\r".contains($0)})
         Helper().deleteFileinDocumentDirectory(filename: imageFilename)
-        //self.goToProfile()
         self.dismiss(animated: true, completion: nil)
     }
     

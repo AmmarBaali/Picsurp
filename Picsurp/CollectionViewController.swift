@@ -12,12 +12,11 @@ private let reuseIdentifier = "Cell"
 
 class CollectionViewController: UICollectionViewController {
 
-    let localImages = Helper().getImagesinDocumentDirectory()
+    var localImages = Helper().getImagesinDocumentDirectory()
+    var originalLocalImagesCount = Helper().getImagesinDocumentDirectory().count
     let numberOfCellsPerRow: CGFloat = 3
-    var count  = Helper().getImagesinDocumentDirectory().count
-    
-    
-
+    var lastIndexPath = IndexPath(row: 0, section: 0)
+    var itemNegativeDelta = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +36,20 @@ class CollectionViewController: UICollectionViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //print("CollectionView - viewWillAppear")
+        print("CollectionView - viewWillAppear")
+        let actualLocalImagesCount = Helper().getImagesinDocumentDirectory().count
+        
+        while(actualLocalImagesCount != originalLocalImagesCount){
+            if (actualLocalImagesCount > originalLocalImagesCount){
+                insertCellAndUpdateCollectionView()
+            } else if (actualLocalImagesCount < originalLocalImagesCount) {
+                deleteCellAndUpdateCollectionView()
+            }
+        }
+        DispatchQueue.main.async {
+            let indexSet = IndexSet(integer: 0)
+            self.collectionView?.reloadSections(indexSet)
+        }
     }
     
 
@@ -95,8 +107,27 @@ class CollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return localImages.count
+        return originalLocalImagesCount
     }
+
+    
+    
+    
+    func deleteCellAndUpdateCollectionView(){
+        self.collectionView?.performBatchUpdates({
+            self.collectionView?.deleteItems(at: [lastIndexPath])
+            originalLocalImagesCount -= 1
+        }, completion: nil)
+    }
+    
+    func insertCellAndUpdateCollectionView(){
+        self.collectionView?.performBatchUpdates({
+            localImages = Helper().getImagesinDocumentDirectory()
+            self.collectionView?.insertItems(at: [IndexPath(row: 0, section: 0)])
+            originalLocalImagesCount += 1
+        }, completion: nil)
+    }
+    
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedImageFile = "SelectedImage"
@@ -104,6 +135,8 @@ class CollectionViewController: UICollectionViewController {
         Helper().createFileinDocumentDirectory(filename: selectedImageFile)
         Helper().writeToFileInDocumentDirectory(filename: selectedImageFile, textToAdd: localImages[indexPath.item])
         print(indexPath)
+        print("localImagesCount = \(originalLocalImagesCount)")
+        lastIndexPath = indexPath
         goToStudio()
     }
     
@@ -117,18 +150,15 @@ class CollectionViewController: UICollectionViewController {
     
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+        print("cellForItemAt happeneed")
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-
+        
         //Setting the Image
         let photoCell = UIImageView(frame: CGRect(x: 0, y: 0, width: 125, height: 125))
         
+        localImages = Helper().getImagesinDocumentDirectory()
         photoCell.image = cropToBounds(image: Helper().retrieveImage(filename: localImages[indexPath.item])!, width: 125, height: 125)
         
-        //photoCell.contentMode = .scaleAspectFit
-        //Setting the image frame
-        //photoCell.backgroundColor = UIColor.gray
-        //photoCell.layer.cornerRadius = 8.0
         photoCell.clipsToBounds = true
         photoCell.layer.borderWidth = 1
         photoCell.layer.borderColor = UIColor.white.cgColor
@@ -179,6 +209,9 @@ class CollectionViewController: UICollectionViewController {
     
     @objc func imageHeld(holdGestureRecognizer: UILongPressGestureRecognizer) {
         if holdGestureRecognizer.state == UIGestureRecognizerState.began {
+            print("long hold detetec")
+            deleteCellAndUpdateCollectionView()
+            
 //            let point = holdGestureRecognizer.location(in: self.collectionView)
 //            let indexPath = self.collectionView?.indexPathForItem(at: point)
 //            print("Long hold detected at point: \(String(describing: indexPath))-------------------")
@@ -204,34 +237,7 @@ class CollectionViewController: UICollectionViewController {
 //            }
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     
 
     func retrieveImage(name: String) -> UIImage? {
@@ -309,6 +315,4 @@ class CollectionViewController: UICollectionViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
