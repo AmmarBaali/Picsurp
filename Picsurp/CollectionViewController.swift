@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PopMenu
 
 private let reuseIdentifier = "Cell"
 
@@ -17,6 +18,7 @@ class CollectionViewController: UICollectionViewController {
     let numberOfCellsPerRow: CGFloat = 3
     var lastIndexPath = IndexPath(row: 0, section: 0)
     var itemNegativeDelta = 0
+    let manager = PopMenuManager.default
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,13 +34,39 @@ class CollectionViewController: UICollectionViewController {
 
         // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        setupPopupMenu()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("CollectionView - viewWillAppear")
-        let actualLocalImagesCount = Helper().getImagesinDocumentDirectory().count
+        print("CollectionView - viewWillAppear -------------------------------------")
+        print("originalLocalImagesCount= \(originalLocalImagesCount)")
+        reloadCollectionView()
+    }
+    
+
         
+    func setupPopupMenu(){
+        let favoriteAction = PopMenuDefaultAction(title: "Favorite", image: UIImage(named: "star_48.png"), didSelect: { action in
+            print("\(String(describing: action.title)) is tapped")
+        })
+
+        let deleteAction = PopMenuDefaultAction(title: "Delete", image: UIImage(named: "delete_48.png"), didSelect: { action in
+            print("\(String(describing: action.title)) is tapped")
+            
+            let imageFilename = String(Helper().readFileinDocumentDirectory(filename: "SelectedImage").filter {!" \n\t\r".contains($0)})
+            Helper().deleteFileinDocumentDirectory(filename: imageFilename)
+            
+            self.deleteCellAndUpdateCollectionView()
+            self.reloadCollectionView()
+        })
+        
+        manager.addAction(favoriteAction)
+        manager.addAction(deleteAction)
+    }
+    
+    func reloadCollectionView(){
+        let actualLocalImagesCount = Helper().getImagesinDocumentDirectory().count
         while(actualLocalImagesCount != originalLocalImagesCount){
             if (actualLocalImagesCount > originalLocalImagesCount){
                 insertCellAndUpdateCollectionView()
@@ -51,68 +79,8 @@ class CollectionViewController: UICollectionViewController {
             self.collectionView?.reloadSections(indexSet)
         }
     }
-    
 
-        
-//    func setupPopupMenu(indexPath: IndexPath){
-//        //print("PopupMenu started with:::::::::::: \(self.imageSelected)")
-//
-//        let favoriteAction = PopMenuDefaultAction(title: "Favorite", image: UIImage(named: "star_48.png"), didSelect: { action in
-//            print("\(String(describing: action.title)) is tapped")
-//        })
-//
-//        let deleteAction = PopMenuDefaultAction(title: "Delete", image: UIImage(named: "delete_48.png"), didSelect: { action in
-//            print("\(String(describing: action.title)) is tapped")
-//            self.deleteCell(indexPath: indexPath)
-//        })
-//
-//        manager.addAction(favoriteAction)
-//        manager.addAction(deleteAction)
-//
-//    }
 
-//    func deleteCell(indexPath: IndexPath){
-//        print("Section: \(indexPath.section)")
-//        print("Item: \(indexPath.item )")
-//        print("Image in delete func: \(self.imageSelected)")
-//
-//        self.collectionView?.performBatchUpdates({
-//            self.deleteFileinDocumentDirectory(filename: self.imageSelected)
-//            self.collectionView?.numberOfItems(inSection: 0)
-//            self.collectionView?.reloadData()
-//        })
-//    }
-    
-
-    
-
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-    // MARK: UICollectionViewDataSource
-
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return originalLocalImagesCount
-    }
-
-    
-    
-    
     func deleteCellAndUpdateCollectionView(){
         self.collectionView?.performBatchUpdates({
             self.collectionView?.deleteItems(at: [lastIndexPath])
@@ -127,15 +95,27 @@ class CollectionViewController: UICollectionViewController {
             originalLocalImagesCount += 1
         }, completion: nil)
     }
+
     
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        print("$$$$$ - numberOfSections -------------------------------------")
+
+        return 1
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of items
+        return originalLocalImagesCount
+    }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedImageFile = "SelectedImage"
-        print("didSelectItemAt: \(localImages[indexPath.item])")
+        //print("didSelectItemAt: \(localImages[indexPath.item])")
         Helper().createFileinDocumentDirectory(filename: selectedImageFile)
         Helper().writeToFileInDocumentDirectory(filename: selectedImageFile, textToAdd: localImages[indexPath.item])
-        print(indexPath)
-        print("localImagesCount = \(originalLocalImagesCount)")
+        //print(indexPath)
+        //print("localImagesCount = \(originalLocalImagesCount)")
         lastIndexPath = indexPath
         goToStudio()
     }
@@ -150,7 +130,7 @@ class CollectionViewController: UICollectionViewController {
     
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("cellForItemAt happeneed")
+        //print("cellForItemAt happeneed")
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
         
         //Setting the Image
@@ -158,7 +138,6 @@ class CollectionViewController: UICollectionViewController {
         
         localImages = Helper().getImagesinDocumentDirectory()
         photoCell.image = cropToBounds(image: Helper().retrieveImage(filename: localImages[indexPath.item])!, width: 125, height: 125)
-        
         photoCell.clipsToBounds = true
         photoCell.layer.borderWidth = 1
         photoCell.layer.borderColor = UIColor.white.cgColor
@@ -210,69 +189,24 @@ class CollectionViewController: UICollectionViewController {
     @objc func imageHeld(holdGestureRecognizer: UILongPressGestureRecognizer) {
         if holdGestureRecognizer.state == UIGestureRecognizerState.began {
             print("long hold detetec")
-            deleteCellAndUpdateCollectionView()
+            manager.present()
             
-//            let point = holdGestureRecognizer.location(in: self.collectionView)
-//            let indexPath = self.collectionView?.indexPathForItem(at: point)
-//            print("Long hold detected at point: \(String(describing: indexPath))-------------------")
-//            print(count)
-//            if let index = indexPath {
-//                let manager = PopMenuManager.default
-//                let imageSelected = localImages[index.row]
-//                print("imageSelected Updated: \(localImages[index.row])")
-//                print("Section: \(String(describing: indexPath?.section))")
-//                print("Item: \(String(describing: indexPath?.item ))")
-//                //print("***Image Selected Value= \(self.imageSelected)***")
-//                //setupPopupMenu(indexPath: indexPath!)
-//
-//                let deleteAction = PopMenuDefaultAction(title: "Delete \(imageSelected.suffix(10))", image: UIImage(named: "delete_48.png"), didSelect: { action in
-//                    print("\(String(describing: action.title)) is tapped")
-//                    self.deleteFileinDocumentDirectory(filename: imageSelected)
-//                })
-//
-//                manager.addAction(deleteAction)
-//                manager.present()
-//            } else {
-//                print("Could not find index path")
-//            }
+            let point = holdGestureRecognizer.location(in: self.collectionView)
+            let indexPath = self.collectionView?.indexPathForItem(at: point)
+            lastIndexPath = indexPath!
+            
+            
+            let selectedImageFile = "SelectedImage"
+            print("didHoldItemAt: \(indexPath)")
+            print(localImages[lastIndexPath.item])
+            Helper().createFileinDocumentDirectory(filename: selectedImageFile)
+            Helper().writeToFileInDocumentDirectory(filename: selectedImageFile, textToAdd: localImages[lastIndexPath.item])
+            
+
         }
     }
 
     
-
-    func retrieveImage(name: String) -> UIImage? {
-        if let dir = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) {
-            return UIImage(contentsOfFile: URL(fileURLWithPath: dir.absoluteString).appendingPathComponent(name).path)
-        }
-        return nil
-    }
-    
-    func deleteFileinDocumentDirectory(filename: String){
-        var filePath = ""
-        let dirs : [String] = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.allDomainsMask, true)
-        
-        if dirs.count > 0 {
-            let dir = dirs[0]
-            filePath = dir.appendingFormat("/" + filename)
-        } else {
-            print("Could not find local directory to store file")
-            return
-        }
-        
-        let fileManager = FileManager.default
-        do {
-            if fileManager.fileExists(atPath: filePath) {
-                try fileManager.removeItem(atPath: filePath)
-                print("Deleted File: \(filename)")
-            } else {
-                print("File \(filename) does not exist")
-            }
-        }
-        catch let error as NSError {
-            print("Ooooops! Something went wrong: \(error)")
-        }
-    }
-
 
     
 
