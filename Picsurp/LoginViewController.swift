@@ -119,7 +119,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate{
         } else {
             print("User not logged in")
         }
-
     }
     
     override func didReceiveMemoryWarning() {

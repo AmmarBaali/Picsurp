@@ -19,9 +19,12 @@ class CollectionViewController: UICollectionViewController {
     var lastIndexPath = IndexPath(row: 0, section: 0)
     var itemNegativeDelta = 0
     let manager = PopMenuManager.default
+    let selectedImageFile = "SelectedImage"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("CollectionView - viewDidLoad")
+
         //Setting up the layout of the Collection View
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 125, height: 125)
@@ -34,16 +37,15 @@ class CollectionViewController: UICollectionViewController {
 
         // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        setupPopupMenu()
+            setupPopupMenu()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("CollectionView - viewWillAppear -------------------------------------")
+        print("CollectionView - viewWillAppear")
         print("originalLocalImagesCount= \(originalLocalImagesCount)")
-        reloadCollectionView()
+       // reloadCollectionView()
     }
-    
 
         
     func setupPopupMenu(){
@@ -54,13 +56,17 @@ class CollectionViewController: UICollectionViewController {
         let deleteAction = PopMenuDefaultAction(title: "Delete", image: UIImage(named: "delete_48.png"), didSelect: { action in
             print("\(String(describing: action.title)) is tapped")
             
-            let imageFilename = String(Helper().readFileinDocumentDirectory(filename: "SelectedImage").filter {!" \n\t\r".contains($0)})
+            let imageFilename = String(Helper().readFileinDocumentDirectory(filename: self.selectedImageFile).filter {!" \n\t\r".contains($0)})
             Helper().deleteFileinDocumentDirectory(filename: imageFilename)
             
-            self.deleteCellAndUpdateCollectionView()
+            DispatchQueue.main.async {
+                let indexSet = IndexSet(integer: 0)
+                self.collectionView?.reloadSections(indexSet)
+            }
+            
             self.reloadCollectionView()
         })
-        
+
         manager.addAction(favoriteAction)
         manager.addAction(deleteAction)
     }
@@ -75,8 +81,7 @@ class CollectionViewController: UICollectionViewController {
             }
         }
         DispatchQueue.main.async {
-            let indexSet = IndexSet(integer: 0)
-            self.collectionView?.reloadSections(indexSet)
+          self.collectionView?.reloadSections(IndexSet(integer: 0))
         }
     }
 
@@ -87,7 +92,6 @@ class CollectionViewController: UICollectionViewController {
             originalLocalImagesCount -= 1
         }, completion: nil)
     }
-    
     func insertCellAndUpdateCollectionView(){
         self.collectionView?.performBatchUpdates({
             localImages = Helper().getImagesinDocumentDirectory()
@@ -99,18 +103,18 @@ class CollectionViewController: UICollectionViewController {
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        print("$$$$$ - numberOfSections -------------------------------------")
-
         return 1
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
+        
+        print("$$$$$ - numberOfItemsInSection ---------- \(originalLocalImagesCount) -------")
         return originalLocalImagesCount
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedImageFile = "SelectedImage"
+        
         //print("didSelectItemAt: \(localImages[indexPath.item])")
         Helper().createFileinDocumentDirectory(filename: selectedImageFile)
         Helper().writeToFileInDocumentDirectory(filename: selectedImageFile, textToAdd: localImages[indexPath.item])
@@ -195,14 +199,10 @@ class CollectionViewController: UICollectionViewController {
             let indexPath = self.collectionView?.indexPathForItem(at: point)
             lastIndexPath = indexPath!
             
-            
-            let selectedImageFile = "SelectedImage"
             print("didHoldItemAt: \(indexPath)")
             print(localImages[lastIndexPath.item])
             Helper().createFileinDocumentDirectory(filename: selectedImageFile)
             Helper().writeToFileInDocumentDirectory(filename: selectedImageFile, textToAdd: localImages[lastIndexPath.item])
-            
-
         }
     }
 
@@ -248,5 +248,9 @@ class CollectionViewController: UICollectionViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+        print("-------- MEMORY WARNING -------------------------------------")
+        print("-------- MEMORY WARNING -------------------------------------")
+        print("-------- MEMORY WARNING -------------------------------------")
+        print("-------- MEMORY WARNING -------------------------------------")
     }
 }
